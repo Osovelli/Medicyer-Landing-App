@@ -9,6 +9,7 @@ import { PharmacyFilterSidebar } from "@/components/pharmacy/PharmacyFilterSideb
 import { PharmacyGrid } from "@/components/pharmacy/PharmacyGrid"
 import { Menu } from "lucide-react"
 import { FAQSection } from "@/components/FAQSection"
+import { Link } from "react-router-dom"
 
 export default function PharmacyPage() {
   /* const [selectedAvailability, setSelectedAvailability] = useState([])
@@ -103,16 +104,17 @@ return (
                         {/* featured brands */}
                         <div className="flex items-center gap-4 overflow-x-auto  pb-4 scrollbar-hide">
                             {FEATURED_BRANDS.map((brand) => (
-                            <div
+                            <Link
                                 key={brand.id}
                                 className="shrink-0 cursor-pointer w-54 md:w-52 h-32 md:h-44 rounded-2xl bg-gray-100 flex items-center justify-center font-bold text-gray-700 border border-gray-200 hover:shadow-md transition"
+                                to={`/pharmacy/${brand.id}`}
                             >
                                 <img 
                                 src={brand.imgurl || ''} 
                                 alt={brand.name} 
                                 className="object-cover w-full h-full rounded-2xl"
                                 />
-                            </div>
+                            </Link>
                             ))}
                         </div>
 

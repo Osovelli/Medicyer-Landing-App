@@ -6,6 +6,8 @@ import { DoctorProfilePage } from './page/DoctorProfilePage'
 import { ModalFlowProvider } from './lib/Modal/ModalFlowContext'
 import { ModalFlowRenderer } from './lib/Modal/ModalFlowRenderer'
 import PharmacyPage from './page/PharmacyPage'
+import PharmacyProfilePage from './page/PharmacyProfile'
+import DrugDetailsPage from './page/DrugDetailsPage'
 
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
           <Route path="/doctors" element={<DoctorsPage/>} />
           <Route path="/doctors/:id" element={<DoctorProfilePage />} />
           <Route path='/pharmacy' element={<PharmacyPage />} />
+          <Route path="/pharmacy/:id" element={<PharmacyProfilePage />} />
+          <Route path="/pharmacy/drugs/:id" element={<DrugDetailsPage />} />
         </Routes>
       </BrowserRouter>
       <ModalFlowRenderer />
