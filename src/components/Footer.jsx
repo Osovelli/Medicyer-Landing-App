@@ -118,7 +118,7 @@ export function Footer() {
 
       {/* Footer Links & Info */}
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12 pb-8 border-b border-purple-400">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-24 mb-12 pb-8 border-b border-purple-400">
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4 justify-center md:justify-start">
@@ -127,7 +127,7 @@ export function Footer() {
               </div>
               <span className="font-semibold text-gray-800 text-center md:text-left">Medicyer</span>
             </div>
-            <p className="text-sm text-gray-700 text-left max-w-xs">
+            <p className="text-sm text-center text-gray-700 md:text-left max-w-xs mx-auto md:mx-0">
               We provide a range of comprehensive medical services to meet your healthcare needs
             </p>
           </div>

@@ -8,6 +8,7 @@ import { MedicalCheckupsCTA } from "@/components/doctors/MedicalCheckupsCTA"
 import { BlogSection } from "@/components/BlogSection"
 import { Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { Navigate, useNavigate } from "react-router-dom"
 
 export default function DoctorsPage() {
   const [selectedAvailability, setSelectedAvailability] = useState([])
@@ -16,6 +17,7 @@ export default function DoctorsPage() {
   const [selectedRating, setSelectedRating] = useState([])
   const [sortBy, setSortBy] = useState("")
   const [location, setLocation] = useState("")
+  const navigate = useNavigate()
   
 
   const doctorCount = 9
@@ -44,7 +46,9 @@ return (
                                     </DropdownMenuTrigger>
                                     <DropdownMenuContent align="start">
                                         <DropdownMenuItem>Pharmacy</DropdownMenuItem>
-                                        <DropdownMenuItem>lab</DropdownMenuItem>
+                                        <DropdownMenuItem onClick={() => navigate('/lab')}>
+                                            Lab
+                                        </DropdownMenuItem>
                                         <DropdownMenuItem>Donor</DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu>
