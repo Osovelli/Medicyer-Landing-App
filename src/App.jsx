@@ -26,6 +26,8 @@ import LoginPage from './page/Auth/LoginPage'
 import SignupPage from './page/Auth/SignupPage'
 import CreatePasswordPage from './page/Auth/CreatePasswordPage'
 import BlogPage from './page/Blog/BlogPage'
+import BlogDetailPage from './page/Blog/BlogDetailPage'
+import ReferralPage from './page/Referral/ReferralPage'
 
 
 function App() {
@@ -61,6 +63,8 @@ function App() {
           <Route path='/wallet' element={<WalletPage />} />
           <Route path='/appointment' element={<AppointmentPage />} />
           <Route path='/blog' element={<BlogPage />} />
+          <Route path={'/blog/:id'} element={<BlogDetailPage />} />
+          <Route path='/referral' element={<ReferralPage />} />
         </Routes>
       </BrowserRouter>
       <ModalFlowRenderer />

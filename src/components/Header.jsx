@@ -41,6 +41,7 @@ export function Header({ isLoggedIn = false, userName }) {
     {icon: Wallet2, label: "Wallet", href: "/wallet"},
     {icon: Calendar1Icon, label: "Appointments", href: "/appointment"},
     { icon: Share2, label: "Referral", href: "/referral" },
+    { icon: BookOpen, label: "Blog", href: "/blog"},
     { icon: Trophy, label: "Fun & Earnings", href: "/fun-earnings" },
     { icon: BookOpen, label: "Resources", href: "/resources", badge: "BETA" },
   ]
