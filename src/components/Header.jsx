@@ -47,8 +47,8 @@ export function Header({ isLoggedIn = false, userName }) {
   ]
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="mx-auto flex h-16 items-center justify-between gap-4 px-4">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
+      <div className="max-w-7xl mx-auto flex h-16 items-center justify-between gap-4 px-4">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg border-indigo-950">
@@ -59,6 +59,26 @@ export function Header({ isLoggedIn = false, userName }) {
 
         {/* Desktop Navigation */}
         <div className="hidden items-center gap-4 md:flex md:flex-1">
+          {/* Location for logged in users */}
+          {!isLoggedIn && (
+            <div className="mx-15">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="gap-2">
+                  <MapPin className="h-4 w-4" />
+                  {location}
+                  <ChevronDown className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={() => setLocation("Abuja, NGA")}>Abuja, NGA</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setLocation("Lagos, NGA")}>Lagos, NGA</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setLocation("Kano, NGA")}>Kano, NGA</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            </div>
+          )}
+
           {isLoggedIn && (
             <DropdownMenu open={isCategoriesOpen} onOpenChange={setIsCategoriesOpen}>
               <DropdownMenuTrigger asChild>
@@ -89,30 +109,17 @@ export function Header({ isLoggedIn = false, userName }) {
             </DropdownMenu>
           )}
 
-          {/* Location Selector */}
-          {!isLoggedIn && (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="gap-2 lg:ml-6 p-6 rounded-3xl focus-visible:border-ring focus-visible:ring-ring/20 focus-visible:ring-[1px]">
-                  <MapPin className="h-4 w-4" />
-                  {location}
-                  <ChevronDown className="h-4 w-4" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start">
-                <DropdownMenuItem onClick={() => setLocation("Abuja, NGA")}>Abuja, NGA</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setLocation("Lagos, NGA")}>Lagos, NGA</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setLocation("Kano, NGA")}>Kano, NGA</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          )}
-
+          
           {/* Search Bar */}
           <div className="relative flex-1 max-w-md lg:ml-8">
             <Search className="bg-purple-100 p-2 rounded-4xl absolute left-2 top-1/2 h-10 w-10 -translate-y-1/2 text-muted-foreground" />
             <Input type="search" placeholder="Find a Specialist..." className="focus-visible:ring-1 focus-visible:border-sky pl-14 text-sky focus:ring-0 bg-secondary/50 rounded-3xl" />
           </div>
+          
+        </div>
 
+        {/* Right Side Actions */}
+        <div className="flex  items-center gap-6 ">
           {/* Location for logged in users */}
           {isLoggedIn && (
             <DropdownMenu>
@@ -130,10 +137,7 @@ export function Header({ isLoggedIn = false, userName }) {
               </DropdownMenuContent>
             </DropdownMenu>
           )}
-        </div>
 
-        {/* Right Side Actions */}
-        <div className="flex items-center gap-6 ">
           {/* Cart */}
           <Button 
           onClick={() => navigate("/cart")}  
@@ -141,7 +145,7 @@ export function Header({ isLoggedIn = false, userName }) {
           className="hidden md:flex p-4 bg-gray-100 hover:bg-gray-200 rounded-lg"
           >
             <ShoppingCart className="h-5 w-5" />
-            <p>Cart</p>
+            {!isLoggedIn && <p>Cart</p>}
           </Button>
 
           {/* User Profile or Login */}
