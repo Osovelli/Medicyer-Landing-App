@@ -63,7 +63,42 @@ export const FemaleIcon = ({ className, ...props }) => (
   <img 
     src="/female icon.svg"
     alt="female icon"
-    className={`w-5 h-5 text-gray-600 dark:text-gray-400 ${className || ""}`}
+    
+  />
+);
+
+export const Cart2Icon = ({ className, ...props}) => (
+  <img 
+   src="/cart 02.svg"
+   alt="cart icon"
+   className={`w-5 h-5 text-gray-600 dark:text-gray-400 ${className || ""}`}
       {...props}
   />
 );
+
+  export const PhoneCallIcon = ({ className, ...props}) => (
+    <img 
+     src="/PhoneCall.svg"
+     alt="phone call icon"
+     className={`w-5 h-5  dark:text-gray-400 ${className || ""}`}
+     {...props}
+    />
+  );
+
+  export const EnvelopeIcon = ({ className, ...props}) => (
+    <img 
+     src="/Envelope.svg"
+     alt="envelope icon"
+     className={`w-5 h-5 dark:text-gray-400 ${className || ""}`}
+     {...props}
+    />
+  );
+
+  export const UserIcon = ({ className, ...props }) => (
+    <img
+    src="/User.svg"
+    alt="user icon"
+    className={`w-5 h-5 dark:text-gray-400 ${className || ""}`}
+     {...props}
+     />
+  )

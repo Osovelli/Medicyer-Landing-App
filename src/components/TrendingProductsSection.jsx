@@ -62,12 +62,12 @@ export function TrendingProductsSection() {
   const [selectedCategory, setSelectedCategory] = useState(1)
 
   return (
-    <section className="py-12 md:py-16 bg-white">
-      <div className="mx-auto sm:px-6 lg:px-8">
+    <section className="py-12 md:py-12 bg-white">
+      <div className="max-w-7xl mx-auto px-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8 ">
-          <h2 className="text-left text-2xl md:text-4xl font-bold text-gray-900">Curated & trending products</h2>
-          <a href="#" className="text-xs font-semibold text-gray-900 hover:text-gray-700">
+          <h2 className="text-left text-2xl md:text-4xl font-semibold text-sky">Curated & trending products</h2>
+          <a href="#" className="text-xs font-semibold text-sky hover:text-blue-900">
             SEE ALL PRODUCTS
           </a>
         </div>
@@ -88,9 +88,9 @@ export function TrendingProductsSection() {
         </div>
 
         {/* Products Grid */}
-        <div className= "sm:grid sm:grid-cols-2 lg:grid-cols-4 flex gap-2 md:gap-10 overflow-x-auto pb-4 mb-8 scrollbar-hide">
+        <div className= "flex p-2 xl:grid xl:grid-cols-4 gap-2  md:gap-3 overflow-x-auto pb-4 mb-8 scrollbar-hide">
           {products.map((product) => (
-            <div key={product.id} className="shrink-0 w-72 md:w-80">
+            <div key={product.id} className="shrink-0 w-62 md:w-72">
               <ProductCard  image={product.image} name={product.name} description={product.description} />
             </div>           
           ))}

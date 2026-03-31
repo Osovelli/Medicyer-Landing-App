@@ -2,8 +2,8 @@ import { Button } from "../ui/button";
 
 export function TrendingProductsCTA() {
   return (
-    <section className="w-full py-12 md:py-20 px-4 bg-linear-to-b from-gray-50 to-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="w-full py-12 md:py-20  bg-linear-to-b from-gray-50 to-white">
+      <div className="max-w-7xl px-6 mx-auto">
         {/* Top Section - Dark Blue with Phone Mockups */}
         <div className="bg-[#252B61] rounded-3xl p-8 md:p-12 mb-8 md:mb-12 overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center ">

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { Button } from "./ui/button"
 import { BoxCutContainer } from "./custom/BoxCutContainer"
+import { CustomButton } from "./custom/CustomButton"
 
 export function HeroSection() {
   const [bannerOffset, setBannerOffset] = useState(0)
@@ -19,28 +20,34 @@ export function HeroSection() {
   return (
     <section className="relative w-full overflow-hidden bg-background">
       {/* Main Hero Container */}
-      <div className="mx-auto px-4 py-12 md:py-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-6 py-12 md:py-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
           {/* Left Content */}
-          <div className="space-y-6">
-            <p className="text-sm text-muted-foreground text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+          <div className="space-y-3 max-w-md">
+            <p className="text-sm font-normal text-[#353849] text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
 
             <div className="space-y-4 text-left">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground text-balance">
+              <h1 className="text-xl md:text-2xl font-bold text-sky text-balance">
                 We provide a range of comprehensive medical services to meet your healthcare needs
               </h1>
 
-              <h2 className="text-3xl md:text-4xl font-bold text-primary">Trusted & Verified specialist in realtime</h2>
+              <h2 className="text-4xl md:text-5xl font-light tracking-wide text-sky mt-10">Trusted & Verified specialist in realtime</h2>
             </div>
 
             {/* Buttons */}
-            <div className="flex flex-wrap gap-4 pt-4">
-              <Button variant="outline" className="px-6 py-2 bg-transparent">
+            <div className="flex flex-wrap gap-4 mt-12">
+              <CustomButton variant="outline" size='lg' className='rounded-2xl border-sky'>
+                Learn more
+              </CustomButton>
+              <CustomButton size='lg' className=" rounded-2xl w-56">
+                Get Started
+              </CustomButton>
+              {/*<Button variant="outline" className="px-6 py-2 bg-transparent">
                 Learn more
               </Button>
-              <Button variant="soft" className="px-6 py-2">
+               <Button variant="soft" className="px-6 py-2">
                 Get Started
-              </Button>
+              </Button> */}
             </div>
           </div>
 
@@ -52,15 +59,15 @@ export function HeroSection() {
           text={"Connect with Trusted specialist in real-time"}
           textPosition="top-30 md:top-55 left-4 md:left-10 md:left-34"
           /> */}
-          <div className="relative overflow-hidden rounded-lg shadow-lg">
-            <img src="/hero.png" alt="Hero image" className="w-full h-full object-cover"/>
+          <div className="relative overflow-hidden">
+            <img src="/hero image.png" alt="Hero image" className="lg:max-w-[449px] xl:max-w-[549px] h-full object-cover"/>
           </div>
           
         </div>
       </div>
 
       {/* Promotional Banners Section */}
-      <div className="relative w-full  py-8  overflow-hidden">
+      <div className="relative w-full  py-18  overflow-hidden">
         {/* First Banner - Dark Blue */}
         <div className="relative h-8 md:h-10 bg-primary flex items-center overflow-hidden">
           <div
@@ -80,7 +87,7 @@ export function HeroSection() {
         </div>
 
         {/* Second Banner - Purple/Pink with skew */}
-        <div className="relative h-8 md:h-10 bg-linear-to-r from-purple-500 to-pink-500 flex items-center overflow-hidden -skew-y-2 md:-skew-y-3 -mt-4 md:-mt-6">
+        <div className="relative h-8 md:h-10 bg-linear-to-r from-purple-500 to-pink-500 flex items-center overflow-hidden -skew-y-2 md:-skew-y-5 -mt-4 md:-mt-6">
           <div
             className="flex whitespace-nowrap gap-8 text-white font-semibold text-sm md:text-base"
             style={{

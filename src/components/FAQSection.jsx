@@ -71,7 +71,7 @@ export function FAQSection() {
     <section className="w-full py-16 md:py-24 px-4 md:px-8">
       <div className="max-w-5xl mx-auto">
         {/* Title */}
-        <h2 className="text-3xl md:text-6xl font-bold mb-12">Frequently asked questions</h2>
+        <h2 className="text-3xl md:text-5xl font-bold mb-12">Frequently asked questions</h2>
 
         {/* Accordion */}
         <Accordion type="single" collapsible value={expandedId} onValueChange={setExpandedId} className="space-y-3">
@@ -82,9 +82,9 @@ export function FAQSection() {
               className="bg-gray-50 rounded-lg px-6 py-4 border-0 data-[state=open]:bg-gray-50"
             >
               <AccordionTrigger className="hover:no-underline text-left">
-                <span className="text-base md:text-lg font-medium text-gray-900">{item.question}</span>
+                <span className="text-base md:text-lg font-normal text-[#151515]">{item.question}</span>
               </AccordionTrigger>
-              <AccordionContent className="text-gray-600 pt-4">{item.answer}</AccordionContent>
+              <AccordionContent className="text-[#747474] text-md text-left font-normal pt-4">{item.answer}</AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>

@@ -2,14 +2,21 @@ import { useState } from "react"
 import { Mail, Phone, Instagram, Dribbble, Twitter, User2Icon, MailIcon } from "lucide-react"
 import { Input } from "./ui/input"
 import { Button } from "./ui/button"
+import { EnvelopeIcon, PhoneCallIcon, UserIcon } from "./custom/Icons"
+import { CustomButton } from "./custom/CustomButton"
+import CustomInput from "./custom/CustomInput"
 
 export function Footer() {
   const [formData, setFormData] = useState({ name: "", email: "" })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log("Form submitted:", formData)
     setFormData({ name: "", email: "" })
+    if (isSubmitting) return
+    setIsSubmitting(true)
+    setTimeout(() => setIsSubmitting(false), 3000)
   }
 
   const handleChange = (e) => {
@@ -21,20 +28,21 @@ export function Footer() {
       {/* Contact Section */}
       <div className="max-w-7xl mx-auto mb-12">
         <div className="bg-white rounded-3xl p-8 md:p-12">
+          <div className="text-left mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Let's get in touch!</h2>
+            <p className="text-gray-600">Our team is here to help. Contact us for quick and friendly support.</p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Left Content */}
             <div className="text-left">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Let's get in touch!</h2>
-              <p className="text-gray-600 mb-8">Our team is here to help. Contact us for quick and friendly support.</p>
-
               {/* Contact Info */}
               <div className="space-y-4 mb-8">
                 <div className="flex items-center gap-3 text-gray-700">
-                  <Phone className="w-5 h-5 text-blue-600" />
+                  <PhoneCallIcon className="w-5 h-5 text-blue-600" />
                   <span>+012 345 6789</span>
                 </div>
                 <div className="flex items-center gap-3 text-gray-700">
-                  <Mail className="w-5 h-5 text-blue-600" />
+                  <EnvelopeIcon className="w-5 h-5 text-blue-600" />
                   <span>Hello@medicyer.com</span>
                 </div>
               </div>
@@ -44,28 +52,28 @@ export function Footer() {
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Connect with us</h3>
                 <div className="flex gap-3">
                   <a
-                    href="#"
-                    className="w-10 h-10 bg-purple-200 rounded-full flex items-center justify-center hover:bg-purple-300 transition"
+                    href="https://www.instagram.com/animaapp/"
+                    className="w-10 h-10 bg-[#DBC3DC] rounded-full flex items-center justify-center hover:bg-[#DBC3DC]/80 transition"
                   >
-                    <Instagram className="w-5 h-5 text-purple-600" />
+                    <Instagram className="w-5 h-5 text-sky" />
                   </a>
                   <a
                     href="#"
-                    className="w-10 h-10 bg-purple-200 rounded-full flex items-center justify-center hover:bg-purple-300 transition"
+                    className="w-10 h-10 bg-[#DBC3DC] rounded-full flex items-center justify-center hover:bg-[#DBC3DC]/80 transition"
                   >
-                    <Dribbble className="w-5 h-5 text-purple-600" />
+                    <Dribbble className="w-5 h-5 text-sky" />
                   </a>
                   <a
                     href="#"
-                    className="w-10 h-10 bg-purple-200 rounded-full flex items-center justify-center hover:bg-purple-300 transition"
+                    className="w-10 h-10 bg-[#DBC3DC] rounded-full flex items-center justify-center hover:bg-[#DBC3DC]/80 transition"
                   >
-                    <span className="text-purple-600 font-bold">Be</span>
+                    <span className="text-sky font-bold">Be</span>
                   </a>
                   <a
                     href="#"
-                    className="w-10 h-10 bg-purple-200 rounded-full flex items-center justify-center hover:bg-purple-300 transition"
+                    className="w-10 h-10 bg-[#DBC3DC] rounded-full flex items-center justify-center hover:bg-[#DBC3DC]/80 transition"
                   >
-                    <Twitter className="w-5 h-5 text-purple-600" />
+                    <Twitter fill="#252B61" className="w-5 h-5 text-sky" />
                   </a>
                 </div>
               </div>
@@ -75,41 +83,41 @@ export function Footer() {
             <div>
               <form onSubmit={handleSubmit} className="space-y-4 text-left">
                 <div className="relative flex items-center">
-                  <Input
+                  <CustomInput
                     type="text"
                     name="name"
                     placeholder="Full Name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-8 py-3 border flex items-center border-gray-300 rounded-sm h-12 focus:outline-none focus:ring-0"
+                    className="w-full px-11 py-3 text-sm border rounded-4xl flex items-center border-gray-300 h-12 focus:ring-0 focus:ring-purple-500 focus:ring-offset-0"
                     required
                   />
-                 <span className="absolute left-2 space-x-1 flex gap-2">
-                    <User2Icon className="text-gray-400 w-5 h-5" />
+                 <span className="absolute left-2 space-x-1 border-r p-1 border-gray-300 flex gap-2">
+                    <UserIcon className="text-gray-400 w-5 h-5" />
                   </span>
                 </div>
                 <div className="relative flex items-center">
-                  <Input
+                  <CustomInput
                     type="email"
                     name="email"
                     placeholder="Email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-9 py-3 border border-gray-300  rounded-sm h-12 focus:outline-none focus:ring-0 focus:ring-purple-500"
+                    className="w-full px-11 py-3 text-sm border rounded-4xl border-gray-300 h-12 focus:outline-none focus:ring-0 focus:ring-purple-500 focus:ring-offset-0"
                     required
                   />
-                  <span className="absolute left-2  space-x-1 flex gap-2">
-                    <MailIcon className="text-gray-400 w-5 h-5" />
+                  <span className="absolute left-2 border-r p-1 space-x-1 flex gap-2">
+                    <EnvelopeIcon className="text-gray-400 w-5 h-5" />
                   </span>
                 </div>
-                <Button
+                <CustomButton
                   type="submit"
-                  size={'custom'}
-                  variant={'soft'}
-                  className="w-full md:w-auto px-12 py-6 bg-blue-900 text-white rounded-lg font-semibold hover:bg-blue-800 transition"
+                  size={'xl'}
+                  className="w-full md:w-auto px-12 py-6 rounded-2xl text-white font-semibold hover:bg-blue-900 transition"
+                  isLoading={isSubmitting}
                 >
                   Submit
-                </Button>
+                </CustomButton>
               </form>
             </div>
           </div>
@@ -117,7 +125,7 @@ export function Footer() {
       </div>
 
       {/* Footer Links & Info */}
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto p-6">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-24 mb-12 pb-8 border-b border-purple-400">
           {/* Brand */}
           <div className="lg:col-span-1">

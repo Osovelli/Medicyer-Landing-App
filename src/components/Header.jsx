@@ -25,6 +25,7 @@ import {
   Calendar1Icon,
 } from "lucide-react"
 import { Link, useNavigate } from "react-router-dom"
+import { Cart2Icon } from "./custom/Icons"
 
 export function Header({ isLoggedIn = false, userName }) {
   const [location, setLocation] = useState("Abuja, NGA")
@@ -48,7 +49,7 @@ export function Header({ isLoggedIn = false, userName }) {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
-      <div className="max-w-7xl mx-auto flex h-16 items-center justify-between gap-4 px-4">
+      <div className="max-w-7xl mx-auto flex h-16 items-center justify-between gap-4 px-6">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg border-indigo-950">
@@ -82,28 +83,34 @@ export function Header({ isLoggedIn = false, userName }) {
           {isLoggedIn && (
             <DropdownMenu open={isCategoriesOpen} onOpenChange={setIsCategoriesOpen}>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="gap-2">
+                <Button variant="ghost" className="gap-2 lg:ml-15 text-sky rounded-3xl focus-visible:border-0 focus-visible:ring-ring/20 focus-visible:ring-[1px]">
                   <Menu className="h-4 w-4" />
                   Categories
                   {isCategoriesOpen && <ChevronDown className="h-4 w-4" />}
                   {!isCategoriesOpen && <ChevronUp className="h-4 w-4" />}
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-[580px] p-2" sideOffset={8}>
-                <div className="grid grid-cols-3 gap-1">
-                  {categories.map((category) => (
-                    <DropdownMenuItem key={category.label} asChild>
-                      <Link to={category.href} className="flex items-center gap-3 rounded-md px-3 py-2.5 text-sm">
-                        <category.icon className="h-4 w-4 text-muted-foreground" />
-                        <span className="flex-1">{category.label}</span>
-                        {category.badge && (
-                          <Badge variant="secondary" className="bg-accent text-accent-foreground text-xs font-medium">
-                            {category.badge}
-                          </Badge>
-                        )}
-                      </Link>
-                    </DropdownMenuItem>
-                  ))}
+              <DropdownMenuContent align="start" className="max-w-308 p-2 mr-38" sideOffset={16}>
+                <div className="grid grid-cols-3 gap-3">
+                  {/* Menu banner */}
+                  <div className="col-span-1">
+                    <img src="/menu banner.png" alt="Menu banner" className="sm:w-64 lg:w-80 xl:w-full" />
+                  </div>
+                  <div className=" col-span-2 grid sm:grid-cols-2 lg:grid-cols-3 bg-gray-50 p-2 shadow-sm rounded-lg">
+                    {categories.map((category) => (
+                      <DropdownMenuItem key={category.label} asChild>
+                        <Link to={category.href} className="flex items-center gap-3 rounded-md px-3 py-2.5 text-sm">
+                          <category.icon className="h-4 w-4 text-muted-foreground" />
+                          <span className="flex-1">{category.label}</span>
+                          {category.badge && (
+                            <Badge className="bg-emerald-200 text-accent-foreground text-xs font-medium">
+                              {category.badge}
+                            </Badge>
+                          )}
+                        </Link>
+                      </DropdownMenuItem>
+                    ))}
+                  </div>
                 </div>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -124,7 +131,7 @@ export function Header({ isLoggedIn = false, userName }) {
           {isLoggedIn && (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="gap-2">
+                <Button variant="ghost" className="gap-2 font-normal text-sky rounded-3xl focus-visible:border-0 focus-visible:ring-ring/20 focus-visible:ring-[1px]">
                   <MapPin className="h-4 w-4" />
                   {location}
                   <ChevronDown className="h-4 w-4" />
@@ -142,9 +149,9 @@ export function Header({ isLoggedIn = false, userName }) {
           <Button 
           onClick={() => navigate("/cart")}  
           variant="ghost"
-          className="hidden md:flex p-4 bg-gray-100 hover:bg-gray-200 rounded-lg"
+          className="hidden md:flex p-4 bg-gray-100 hover:bg-gray-200 rounded-3xl"
           >
-            <ShoppingCart className="h-5 w-5" />
+            <Cart2Icon className="h-5 w-5" />
             {!isLoggedIn && <p>Cart</p>}
           </Button>
 

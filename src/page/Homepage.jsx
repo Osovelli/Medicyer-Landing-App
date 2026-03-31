@@ -12,7 +12,7 @@ import { Footer } from "@/components/Footer"
 
 export default function Homepage() {
   // Toggle this to see logged in vs logged out state
-  const isLoggedIn = false
+  const isLoggedIn = true
   const userName = "Tobi Dev"
 
   return (

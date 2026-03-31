@@ -10,12 +10,12 @@ return (
             />
 
             {/* slight blue hue overlay */}
-            <div className="absolute inset-0 bg-blue-600 opacity-20 pointer-events-none" />
+            <div className="absolute inset-0 bg-linear-to-b from-[#252B61]/10 to-[#252B61] pointer-events-none" />
 
             {/* content on top of the image */}
             <div className="absolute inset-0 p-5 md:p-6 flex flex-col justify-end items-start z-10">
                 <p className="text-xs md:text-sm text-white font-normal">{category}</p>
-                <h3 className="text-sm md:text-lg font-semibold text-white mt-1">{title}</h3>
+                <h3 className="text-sm md:text-lg font-semibold text-left text-white mt-1">{title}</h3>
             </div>
         </div>
     </div>
