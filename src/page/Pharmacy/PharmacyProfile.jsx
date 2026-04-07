@@ -8,27 +8,7 @@ import { Footer } from "@/components/Footer"
 import { DrugCard } from "@/components/drugs/DrugCard"
 import { PrescriptionUpload } from "@/components/pharmacy/PrescriptionUpload"
 import { PharmacyAbout } from "@/components/pharmacy/PharmacyAbout"
-import { DrugImageGallery } from "@/components/drugs/DrugImageGallery"
-import { DrugDetailsInfo } from "@/components/drugs/DrugDetailsInfo"
-
-// Sample drug data - in a real app, this would come from an API or database
-const drugData = {
-  id: "1",
-  name: "Ampicilyn Lorem ipsum dolor sit 450 MGL",
-  description: "Measures the levels of substances in your blood...",
-  loyaltyPoints: 12,
-  price: 45000,
-  rating: 4.5,
-  about:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua... ",
-  mainImage: "/meds.png",
-  thumbnails: [
-    "/meds.png",
-    "/meds.png",
-    "/meds.png",
-    "/meds.png",
-  ],
-}
+import { Link, useNavigate } from "react-router-dom"
 
 // Sample data
 const pharmacyData = {
@@ -85,25 +65,54 @@ const drugs = [
     description: "Measures the levels of substances in your blood...",
     imageUrl: "/meds.png",
   },
+  {
+    id: "6",
+    name: "Ampicilyn 450 MG",
+    description: "Measures the levels of substances in your blood...",
+    imageUrl: "/meds.png",
+  },
+  {
+    id: "7",
+    name: "Ampicilyn 450 MG",
+    description: "Measures the levels of substances in your blood...",
+    imageUrl: "/meds.png",
+  },
+  {
+    id: "8",
+    name: "Ampicilyn 450 MG",
+    description: "Measures the levels of substances in your blood...",
+    imageUrl: "/meds.png",
+  },
+  {
+    id: "9",
+    name: "Ampicilyn 450 MG",
+    description: "Measures the levels of substances in your blood...",
+    imageUrl: "/meds.png",
+  },
+  {
+    id: "10",
+    name: "Ampicilyn 450 MG",
+    description: "Measures the levels of substances in your blood...",
+    imageUrl: "/meds.png",
+  },
+  {
+    id: "11",
+    name: "Ampicilyn 450 MG",
+    description: "Measures the levels of substances in your blood...",
+    imageUrl: "/meds.png",
+  },
 ]
 
-export default function DrugDetailsPage() {
+export default function PharmacyProfilePage() {
+  const navigate = useNavigate()
   const [selectedCategory, setSelectedCategory] = useState("Ophthalmic")
-  const handleAddToCart = (quantity) => {
-    console.log(`Added ${quantity} of ${drugData.name} to cart`)
-    // Handle add to cart logic here
-  }
-
-  const handleWishlist = () => {
-    console.log(`Added ${drugData.name} to wishlist`)
-    // Handle wishlist logic here
-  }
 
   return (
-   <div>
+   <div className="min-h-screen bg-[#FAFAFA] flex flex-col">
     <Header />
-    {/* Breadcrumb */}
-    <div className="bg-white mx-auto px-4 py-4 border-b border-gray-200">
+    <div className="w-full max-w-7xl mx-auto">
+      {/* Breadcrumb */}
+      <div className=" px-4 py-4 ">
         <div className="mx-auto px-4 py-4 text-left">
             {/* breadcrumb text */}
             <Breadcrumb className="text-xs text-gray-600">
@@ -119,8 +128,10 @@ export default function DrugDetailsPage() {
                                 <span className="sr-only">Toggle menu</span>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align="start">
-                                <DropdownMenuItem>Pharmacy</DropdownMenuItem>
-                                <DropdownMenuItem>lab</DropdownMenuItem>
+                                <DropdownMenuItem>Pharmacy</DropdownMenuItem>                               
+                                <DropdownMenuItem onClick={() => navigate('/lab')}>
+                                  Lab
+                                </DropdownMenuItem>
                                 <DropdownMenuItem>Donor</DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
@@ -141,26 +152,17 @@ export default function DrugDetailsPage() {
             </Breadcrumb>
         </div>
     </div>
-    <main className="bg-white">
+    <main className="">
       {/* Top section with 2-column layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-6 py-8 max-w-9xl mx-auto">
-        {/* Left column - Image Gallery */}
-        <div>
-          <DrugImageGallery mainImage={drugData.mainImage} thumbnails={drugData.thumbnails} drugName={drugData.name} />
+      <div className="grid rounded-md bg-white grid-cols-1 lg:grid-cols-2 gap-8 px-6 py-8">
+        {/* Left column - Pharmacy About */}
+        <div className="lg:col-span-1">
+          <PharmacyAbout {...pharmacyData} />
         </div>
 
-        {/* Right column - Drug Details */}
-        <div>
-          <DrugDetailsInfo
-            name={drugData.name}
-            description={drugData.description}
-            loyaltyPoints={drugData.loyaltyPoints}
-            price={drugData.price}
-            rating={drugData.rating}
-            about={drugData.about}
-            onAddToCart={handleAddToCart}
-            onWishlist={handleWishlist}
-          />
+        {/* Right column - Prescription Upload */}
+        <div className="lg:col-span-1">
+          <PrescriptionUpload />
         </div>
       </div>
 
@@ -169,10 +171,10 @@ export default function DrugDetailsPage() {
 
       {/* Drugs section */}
       <div className="px-6 py-8 max-w-9xl mx-auto">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-left">Featured Product</h2>
+        <h2 className="text-2xl font-bold text-sky mb-6 text-left">Category</h2>
 
         {/* Category tabs */}
-        {/* <div className="flex gap-3 mb-8 overflow-x-auto pb-3">
+        <div className="flex gap-3 mb-8 overflow-x-auto pb-3">
           {categories.map((category) => (
             <Button
               key={category}
@@ -181,7 +183,7 @@ export default function DrugDetailsPage() {
               className={`rounded-full whitespace-nowrap ${
                 selectedCategory === category
                   ? "bg-[#1a1a4d] text-white hover:bg-[#0f0f2e]"
-                  : "border border-gray-300 text-gray-700 hover:bg-gray-50"
+                  : "bg-[#F3F3FF] text-gray-700 hover:bg-gray-50"
               }`}
             >
               {category}
@@ -193,7 +195,7 @@ export default function DrugDetailsPage() {
           >
             More
           </Button>
-        </div> */}
+        </div>
 
         {/* Drug Cards Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-12">
@@ -208,13 +210,14 @@ export default function DrugDetailsPage() {
         </div>
 
         {/* More drugs */}
-        {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {drugs.slice(0, 8).map((drug) => (
             <DrugCard key={`${drug.id}-2`} {...drug} />
           ))}
-        </div> */}
+        </div>
       </div>
     </main>
+    </div> 
     <BlogSection />
     <Footer />
    </div> 

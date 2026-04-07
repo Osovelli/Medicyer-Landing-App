@@ -31,6 +31,18 @@ export function DoctorProfileDetails() {
         doctorImage: '/pharmacist.jpg',
         doctorName: 'Dr. Sharafadeen',
         specialty: 'Orthopedic Surgeon',
+        booking: {
+          fee: '5000',
+          date: selectedDate,
+          time: selectedTime,
+          sessionType: 'Virtual',
+        },
+        rating: {
+          value: 4.5,
+          reviews: 120,
+        },
+        patients: 34,
+        experience: 23,
         selectedTime,
         selectedDate,
       }
@@ -61,8 +73,8 @@ export function DoctorProfileDetails() {
   ]
 
   return (
-    <main className="min-h-screen bg-white">
-      <div className="max-w-9xl mx-auto  py-8">
+    <main className="">
+      <div className="max-w-7xl mx-auto  py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Column - Doctor About */}
           <DoctorAbout

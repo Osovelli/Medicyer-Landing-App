@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { ChevronDown, CalendarDays } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
+import { CalendarIcon } from "./Icons";
 
 /**
  * Reusable schedule selector with day picker + time slot grid.
@@ -88,9 +89,9 @@ export function ScheduleSelector({
         {totalSlots != null && (
           <Badge
             variant="outline"
-            className="gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold text-[#252B61] dark:text-blue-400 border-slate-200 dark:border-slate-600 shrink-0 whitespace-nowrap"
+            className="gap-1.5 bg-[#BD8CBF26] px-2.5 py-1 rounded-full text-[11px] font-semibold text-[#252B61] dark:text-blue-400 border-slate-200 dark:border-slate-600 shrink-0 whitespace-nowrap"
           >
-            <CalendarDays className="w-3.5 h-3.5" />
+            <CalendarIcon className="w-3.5 h-3.5" />
             {totalSlots} Slots
           </Badge>
         )}

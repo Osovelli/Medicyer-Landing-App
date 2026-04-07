@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { MapPin, Trash2 } from "lucide-react";
+import { CustomButton } from "../custom/CustomButton";
 
 export function SaveModal({ open, onOpenChange, savedTests }) {
     const homeServiceFee = 4000; // Example fee
@@ -39,9 +40,13 @@ export function SaveModal({ open, onOpenChange, savedTests }) {
                         <span>Total:</span>
                         <span>₦ {totalAmount.toLocaleString("en-NG")}</span>
                     </div>
-                    <Button className="mt-4 bg-sky w-full h-9 rounded-4xl hover:bg-sky/80 text-white" onClick={onOpenChange.bind(null, false)}>
+                    <CustomButton 
+                    className="mt-4 bg-sky w-full rounded-3xl hover:bg-sky/80 text-white"
+                    size="lg" 
+                    onClick={onOpenChange.bind(null, false)}
+                    >
                         Book Now
-                    </Button>
+                    </CustomButton>
                 </DialogDescription>
             </DialogContent>
         </Dialog>

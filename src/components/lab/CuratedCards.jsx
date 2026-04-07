@@ -14,7 +14,7 @@ rating,
     return (
     <div
       className={cn(
-        "group shrink-0 w-[200px] sm:max-w-[250px] lg:max-w-[440px] snap-start",
+        "group shrink-0 w-[200px] sm:max-w-[250px] xl:max-w-[440px] snap-start",
          "rounded-[18px] overflow-hidden cursor-pointer",
          "shadow-[0_4px_20px_rgba(26,29,46,0.08)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)]",
          "hover:shadow-[0_8px_28px_rgba(26,29,46,0.14)] dark:hover:shadow-[0_8px_28px_rgba(0,0,0,0.4)]",
@@ -43,7 +43,7 @@ rating,
         )}
 
         {rating && (
-            <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-600 px-2 py-0.5 rounded-full">
+            <span className="inline-flex border-yellow-300 items-center gap-1 text-[11px] font-semibold text-slate-700 dark:text-slate-300 border dark:border-slate-600 px-2 py-0.5 rounded-full">
                 <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
                 {rating}
             </span>
@@ -51,12 +51,12 @@ rating,
         </div>
 
         {/* Name */}
-         <h3 className="text-sm text-left font-bold text-slate-900 dark:text-slate-100 leading-snug">
+         <h3 className="text-base text-left font-semibold text-sky dark:text-slate-100 leading-snug">
             {name}
         </h3>
         {/* Location */}  
         {location && (
-            <p className="text-xs text-left text-slate-400 dark:text-slate-500 mt-0.5">
+            <p className="text-left text-sm text-[#495B69] dark:text-slate-500 mt-0.5">
                 {location}
             </p>
         )} 

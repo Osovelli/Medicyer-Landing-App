@@ -1,8 +1,8 @@
 export function BlogCard({ image, title, author, authorImage, postedDaysAgo }) {
   return (
-    <div className="flex flex-col w-[358px] bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+    <div className="flex flex-col min-w-67 lg:w-[358px] bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
       {/* Blog Image */}
-      <div className="relative w-full h-56 rounded-b-xl overflow-hidden bg-gray-200">
+      <div className="relative w-full lg:w-full h-56 rounded-b-xl overflow-hidden bg-gray-200">
         <img src={image || "/placeholder.svg"} alt={title} className="w-full h-full object-cover" />
       </div>
 

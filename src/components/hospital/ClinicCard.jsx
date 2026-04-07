@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { TubeIcon } from "../custom/Icons";
 import { useState } from "react";
 import { CalendarCheck } from "lucide-react";
+import { CustomButton } from "../custom/CustomButton";
 
 export function ClinicCard({ icon, title, category, slots, onBook, className, ...props }) {
   return (
@@ -17,7 +18,7 @@ export function ClinicCard({ icon, title, category, slots, onBook, className, ..
       {/* Icon */}
       <div className="flex items-center justify-start mb-2">
         {icon || <TubeIcon className="text-slate-500" />}
-        <div className="ml-auto text-purple-600 bg-purple-100 flex items-center rounded-full px-3 py-1 text-xs">
+        <div className="ml-auto text-sky bg-[#BD8CBF26] flex items-center rounded-full px-5 py-3 text-xs">
           <CalendarCheck className="w-3 h-3 inline mr-1" />
           {slots} Slots
         </div>
@@ -37,13 +38,13 @@ export function ClinicCard({ icon, title, category, slots, onBook, className, ..
 
       {/* Action Button */}
       <div className="pt-4">
-        <Button
+        <CustomButton
           onClick={onBook}
           variant={'outline'}
-          className="w-full border border-sky text-gray-900 hover:bg-sky/50 hover:text-gray-50 hover:border-0 transition-colors font-bold py-2 text-sm"
+          className="w-full rounded-xl border border-sky text-gray-900 hover:bg-sky/50 hover:text-gray-50 hover:border-0 transition-colors font-bold py-2 text-sm"
         >
           Book Now
-        </Button>
+        </CustomButton>
       </div>
     </div>
   );

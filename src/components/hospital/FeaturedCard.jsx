@@ -16,7 +16,7 @@ export function FeatureCard({
     <div
       className={cn(
         "group shrink-0 w-[260px] md:w-[280px] lg:w-[300px] snap-start",
-        "bg-white dark:bg-slate-800 rounded-[20px] overflow-hidden",
+        "bg-white dark:bg-slate-800 rounded-3xl overflow-hidden",
         "shadow-[0_4px_20px_rgba(26,29,46,0.08)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.25)]",
         "hover:shadow-[0_8px_32px_rgba(26,29,46,0.14)] dark:hover:shadow-[0_8px_32px_rgba(0,0,0,0.35)]",
         "hover:-translate-y-[3px] transition-all duration-300 cursor-pointer",
@@ -30,7 +30,7 @@ export function FeatureCard({
           src={image}
           alt={name}
           loading="lazy"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover rounded-br-4xl"
         />
 
         {/* Badge overlay */}

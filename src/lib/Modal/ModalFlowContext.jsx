@@ -31,13 +31,14 @@ export function ModalFlowProvider({ children }) {
 
     return (
         <ModalFlowContext.Provider 
-        value={{ 
+         value={{ 
             flow, 
             payload, 
             startFlow, 
             next, 
             cancelFlow 
-            }}>
+            }}
+        >
             {children}
         </ModalFlowContext.Provider>
     );

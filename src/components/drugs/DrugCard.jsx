@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Heart } from "lucide-react"
 import { Link } from "react-router-dom"
+import { Heart2Icon } from "../custom/Icons"
 
 export function DrugCard({ id, name, description, imageUrl, onAddToCart, onWishlist }) {
   return (
@@ -22,7 +23,7 @@ export function DrugCard({ id, name, description, imageUrl, onAddToCart, onWishl
       {/* Content */}
       <div className="flex flex-col gap-2 px-4 pb-4 text-start">
         <h3 className="font-normal text-lg text-sky">{name}</h3>
-        <p className="text-sm text-gray-600 line-clamp-2">{description}</p>
+        <p className="text-xs text-normal text-[#495B69] line-clamp-2">{description}</p>
 
         {/* Actions */}
         <div className="flex gap-2">
@@ -34,8 +35,8 @@ export function DrugCard({ id, name, description, imageUrl, onAddToCart, onWishl
           >
             Add to Cart
           </Button>
-          <Button onClick={() => onWishlist?.(id)} variant="outline" size="icon-sm" className="border border-[#252B61] p-4">
-            <Heart className="size-6" />
+          <Button onClick={() => onWishlist?.(id)} variant="outline" className="border border-[#252B61] p-2">
+            <Heart2Icon className="text-yellow-300" />
           </Button>
         </div>
       </div>

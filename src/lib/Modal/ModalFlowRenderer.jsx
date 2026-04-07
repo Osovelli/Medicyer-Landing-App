@@ -12,7 +12,7 @@ export function ModalFlowRenderer() {
 
     return (
         <Dialog open={true} onOpenChange={cancelFlow}>
-            <DialogContent className="max-w-3xl w-full">
+            <DialogContent className="sm:max-w-2xl m-4">
                 <StepModal 
                 payload={payload} 
                 next={next} 

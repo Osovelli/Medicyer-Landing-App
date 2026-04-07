@@ -29,7 +29,7 @@ export function LabsFilterSidebar({
   ]
 
   return (
-    <aside className="w-full md:w-64 bg-white rounded-lg p-6 border border-gray-200 h-fit">
+    <aside className="w-full md:w-56 bg-white rounded-lg p-6 border border-gray-200 h-fit">
       {/* Proximity Range Slider */}
       {/* <div className="mb-8">
         <h3 className="text-lg font-bold text-gray-900 mb-6">Proximity</h3>
@@ -101,6 +101,7 @@ export function LabsFilterSidebar({
             <label key={option.id} className="flex items-center gap-3 cursor-pointer">
               <Checkbox
                 checked={selectedRating.includes(option.value)}
+                className={'data-[state=checked]:bg-[#BD8CBF] data-[state=checked]:border-transparent rounded focus:ring-0'}
                 onCheckedChange={(checked) => {
                   if (checked) {
                     onRatingChange([...selectedRating, option.value])

@@ -1,14 +1,16 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft, Share2, Calendar, Clock, MapPin, Video } from 'lucide-react'
+import { HeartIcon, MedicalReportIcon, ShareIcon, StarIcon } from '../custom/Icons'
 
 export function BookingDetails({ payload, next, cancel }) {
+
   const bookingData = {
     doctorImage: payload.doctorImage || '/placeholder.svg',
     doctorName: payload.doctorName || 'Dr. Unknown',
     specialty: payload.specialty || 'Specialist',
     location: payload.location || 'Abuja, Nigeria',
-    rating: payload.rating || 4.5,
+    rating: payload.rating.value || 4.5,
     patients: payload.patients || '34K',
     experience: payload.experience || 23,
     date: payload.selectedDate || '12 June, 2024',
@@ -17,14 +19,16 @@ export function BookingDetails({ payload, next, cancel }) {
     sessionType: payload.sessionType || 'Online',
   }
 
+  console.log({bookingData})
+
   const calculateTimeRemaining = () => {
     return 'Due in 30mins'
   }
 
   return (
-    <div className="w-full bg-white">
+    <div className="w-full md:max-w-3xl p-2">
       {/* Header with Navigation */}
-      <div className="flex items-center justify-between border-b border-slate-200 p-4">
+      <div className="flex items-center  justify-between border-b border-slate-200 p-4">
         <button
           onClick={cancel}
           className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-slate-100"
@@ -32,7 +36,7 @@ export function BookingDetails({ payload, next, cancel }) {
           <ArrowLeft className="h-5 w-5 text-slate-600" />
         </button>
         <button className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-slate-100">
-          <Share2 className="h-5 w-5 text-slate-600" />
+          <ShareIcon className="h-5 w-5 text-slate-600" />
         </button>
       </div>
 
@@ -43,7 +47,7 @@ export function BookingDetails({ payload, next, cancel }) {
           <img
             src={bookingData.doctorImage || "/placeholder.svg"}
             alt={bookingData.doctorName}
-            className="h-72 w-80 rounded-lg object-cover"
+            className="sm:h-72 sm:w-80 rounded-lg object-cover"
           />
           {/* Doctor Info */}
           <div className="mb-6">
@@ -56,20 +60,29 @@ export function BookingDetails({ payload, next, cancel }) {
         </div>
 
         {/* Right Side - Details */}
-        <div className="flex-1">
+        <div className="">
           {/* Stats Badges */}
           <div className="mb-6 flex gap-3">
-            <div className="rounded-lg bg-yellow-100 px-3 py-2">
-              <p className="text-xs text-yellow-600">★ {bookingData.rating}</p>
-              <p className="text-sm font-semibold text-slate-900">Rating</p>
+            <div className="rounded-lg w-34 h-16 flex flex-wrap items-start gap-2 justify-start bg-[#F0D86926] px-3 py-2">
+              <StarIcon className="h-5 w-5 text-yellow-600" />
+              <div className="text-sm font-semibold text-slate-900">
+                <p>{bookingData?.rating}</p>
+                <span>Rating</span>
+              </div>
             </div>
-            <div className="rounded-lg bg-teal-100 px-3 py-2">
-              <p className="text-xs text-teal-600">♥ {bookingData.patients}</p>
-              <p className="text-sm font-semibold text-slate-900">Patients</p>
+            <div className="rounded-lg w-34 h-16 flex flex-wrap gap-2 items-start justify-start bg-[#A3DAC226] px-3 py-2">
+              <HeartIcon fill='' className={'w-5 h-5'} />
+              <div className="text-sm font-semibold text-slate-900">
+                <p>{bookingData?.patients}</p>
+                <span>Patients</span>
+              </div>
             </div>
-            <div className="rounded-lg bg-purple-100 px-3 py-2">
-              <p className="text-xs text-purple-600">📋 {bookingData.experience} yrs.</p>
-              <p className="text-sm font-semibold text-slate-900">Work Exp.</p>
+            <div className="rounded-lg w-34 h-16 flex gap-2 flex-wrap items-start justify-start bg-purple-100 px-3 py-2">
+              <MedicalReportIcon fill='' className={'w-5 h-5'} />
+              <div className="text-sm font-semibold text-slate-900">
+                <p>{bookingData?.experience}</p>
+                <span>Experience</span>
+              </div>
             </div>
           </div>
 

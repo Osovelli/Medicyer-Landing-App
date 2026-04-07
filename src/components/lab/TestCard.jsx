@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
+import { CustomButton } from "../custom/CustomButton";
 
 const TransfusionIcon = () => (
   <img
@@ -147,12 +148,13 @@ export function TestCard({
 
       {/* Action Buttons */}
         <div className="flex gap-2 pt-2">
-          <button
+          <CustomButton
+            variant="outline"
             onClick={() => onBook?.(test)}
-            className="flex-1 border-2 border-gray-900 text-sky font-bold py-2 rounded-full hover:bg-gray-50 transition-colors text-sm"
+            className="flex-1 border-2 border-gray-900 text-sky font-bold py-2 rounded-xl hover:bg-gray-50 transition-colors text-sm"
           >
             Book Now
-          </button>
+          </CustomButton>
           <button 
             className="w-10 h-10 flex items-center justify-center bg-gray-900 rounded-full text-white hover:bg-gray-800 transition-colors"
             onClick={() => onSave?.(test)}

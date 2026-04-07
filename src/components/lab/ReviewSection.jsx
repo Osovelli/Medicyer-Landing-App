@@ -41,33 +41,33 @@ export function ReviewSection({
         </div>
       </CardHeader>
 
-      <CardContent className="px-5 pb-5">
+      <CardContent className="px-5 pb-5 ">
         {/* Rating summary card */}
-        <div className="bg-slate-50 dark:bg-slate-700/40 rounded-2xl p-5 mb-5">
-          <div className="flex items-center justify-between mb-4">
+        <div className=" dark:bg-slate-700/40 rounded-2xl mb-5">
+          <div className="bg-[#FFEADB] p-6 gap-3 flex flex-col items-center justify-between mb-4 ">
             {/* Big score */}
             <div>
-              <p className="text-4xl font-bold text-slate-900 dark:text-slate-100 leading-none">
+              <p className="text-4xl font-medium text-slate-900 dark:text-slate-100 leading-none">
                 {averageRating}
               </p>
             </div>
 
             {/* Stars + count */}
-            <div className="text-right">
-              <div className="flex items-center justify-end gap-0.5 mb-1">
+            <div className="space-y-2">
+              <div className="flex items-center justify-end gap-2 mb-1">
                 {[1, 2, 3, 4, 5].map((s) => (
                   <Star
                     key={s}
                     className={cn(
                       "w-4 h-4",
                       s <= Math.round(averageRating)
-                        ? "fill-yellow-400 text-yellow-400"
-                        : "fill-slate-200 text-slate-200 dark:fill-slate-600 dark:text-slate-600"
+                        ? "fill-[#F0D869] text-yellow-400"
+                        : "fill-[#AAAAAA] text-[#AAAAAA] dark:fill-slate-600 dark:text-slate-600"
                     )}
                   />
                 ))}
               </div>
-              <p className="text-2xl font-bold text-slate-900 dark:text-slate-100 leading-none">
+              <p className="text-sm font-normal text-slate-900 dark:text-slate-100 leading-none">
                 {totalReviews}
               </p>
             </div>
@@ -79,7 +79,8 @@ export function ReviewSection({
               const count = distribution[star] || 0;
               const pct = maxCount > 0 ? (count / maxCount) * 100 : 0;
               return (
-                <div key={star} className="flex items-center gap-2.5">
+                <div key={star} className="flex items-center gap-1.5">
+                  <Star className="w-2 h-2 fill-[#F0D869] text-[#F0D869]" />
                   <span className="text-xs font-medium text-slate-500 dark:text-slate-400 w-3 text-right">
                     {star}
                   </span>

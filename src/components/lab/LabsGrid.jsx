@@ -239,7 +239,7 @@ export function LabsGrid({
       <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredLabs.map((lab) => (
           <CuratedCard
-              className={"md:w-[350px] w-full"}
+              className={"md:w-[300px] w-full"}
               key={lab.id}
               logo={lab.logo}
               bgColor={lab.bgColor}

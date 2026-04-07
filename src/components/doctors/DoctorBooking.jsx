@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { ChevronDown, ChevronLeft, ChevronRight, X } from 'lucide-react'
+import { Calendar, ChevronDown, ChevronLeft, ChevronRight, X } from 'lucide-react'
+import { CalendarIcon } from '../custom/Icons'
+import { CustomButton } from '../custom/CustomButton'
 
 export function DoctorBooking({
   month = 'December',
@@ -117,7 +119,8 @@ export function DoctorBooking({
   const isAppointmentValid = selectedDate && selectedTime
 
   return (
-    <div className="space-y-6 bg-gray-50 p-6 rounded-2xl">
+    <div className="space-y-6 bg-white p-4 rounded-2xl">
+      <div className="space-y-6 bg-[#F2F2F2] p-4 rounded-lg">
       {/* Schedule Header */}
       <div className="flex items-center justify-between flex-wrap gap-4">
         <div className="flex items-center gap-2">
@@ -130,9 +133,9 @@ export function DoctorBooking({
             <ChevronDown className="w-5 h-5" />
           </button>
         </div>
-        <div className="flex items-center gap-2 bg-pink-100 px-4 py-2 rounded-full">
-          <span className="text-2xl">📅</span>
-          <span className="font-semibold text-[#1a1a4d]">{slots} Slots</span>
+        <div className="flex items-center gap-2 bg-[#BD8CBF26] px-4 py-2 rounded-full">
+          <CalendarIcon className="w-5 h-5 text-[#BD8CBF]" />
+          <span className="font-normal text-xs text-sky">{slots} Slots</span>
         </div>
       </div>
 
@@ -223,7 +226,7 @@ export function DoctorBooking({
 
       {/* Time Slots */}
       <div className="space-y-3">
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid lg:grid-cols-3 gap-3">
           {timeSlots.map((slot) => (
             <button
               key={slot.time}
@@ -234,7 +237,7 @@ export function DoctorBooking({
                   ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   : selectedTime === slot.time
                     ? 'bg-[#1a1a4d] text-white'
-                    : 'bg-white text-gray-900 border border-gray-200 hover:border-[#1a1a4d]'
+                    : 'bg-white text-sky border-gray-200 hover:border-[#1a1a4d]'
               }`}
             >
               {slot.booked ? 'Booked' : slot.time}
@@ -242,14 +245,14 @@ export function DoctorBooking({
           ))}
         </div>
       </div>
-
-      <Button
+      </div>
+      <CustomButton
         onClick={onBookAppointment}
         disabled={!isAppointmentValid}
         className="w-full h-16 bg-[#252B61] hover:bg-[#252B61]/90 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-xl text-base transition-all"
       >
         {isAppointmentValid ? 'Book Appointment' : 'Select Date & Time'}
-      </Button>
+      </CustomButton>
     </div>
   )
 }

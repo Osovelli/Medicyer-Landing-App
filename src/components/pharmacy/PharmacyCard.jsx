@@ -10,7 +10,7 @@ export function PharmacyCard({
       onClick={onSelect}
       className="group relative overflow-hidden rounded-3xl cursor-pointer transition-transform hover:scale-105"
     >
-      <div className="relative h-64 w-full bg-gray-200">
+      <div className="relative h-64 xl:h-full w-full bg-gray-200">
         <img
           src={imageUrl || "/placeholder.svg"}
           alt={name}

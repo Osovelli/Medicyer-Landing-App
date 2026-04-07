@@ -1,5 +1,6 @@
 import { Checkbox } from "@/components/ui/checkbox"
 import { Slider } from "@/components/ui/slider"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
 export function DoctorsFilterSidebar({
   onAvailabilityChange,
@@ -12,9 +13,8 @@ export function DoctorsFilterSidebar({
   selectedRating,
 }) {
   const availabilityOptions = [
-    { id: "today", label: "Today" },
-    { id: "tomorrow", label: "Tomorrow" },
-    { id: "this-week", label: "This week" },
+    { id: "on site", label: "On Site", count: 14 },
+    { id: "virtual", label: "Virtual", count: 78 },
   ]
 
   const specialtyOptions = [
@@ -32,11 +32,11 @@ export function DoctorsFilterSidebar({
   ]
 
   return (
-    <aside className="w-full md:w-64 bg-white rounded-lg p-6 border border-gray-200">
+    <aside className="w-full md:w-46 lg:w-54 h-fit bg-white rounded-lg p-6 shadow-sm">
       {/* Availability */}
       <div className="mb-8">
-        <h3 className="text-lg font-bold text-gray-900 mb-4">Availability</h3>
-        <div className="space-y-3">
+        <h3 className="text-lg text-left font-bold text-gray-900 mb-4">Availability</h3>
+        {/* <div className="space-y-3">
           {availabilityOptions.map((option) => (
             <label key={option.id} className="flex items-center gap-3 cursor-pointer">
               <Checkbox
@@ -51,18 +51,42 @@ export function DoctorsFilterSidebar({
               />
               <span className="text-sm text-gray-700">{option.label}</span>
             </label>
+
           ))}
+        </div> */}
+        <div className="space-y-3">
+          <RadioGroup 
+          onValueChange={onAvailabilityChange} 
+          defaultValue={selectedAvailability}
+          className={''}
+          >
+            {availabilityOptions.map((option) => (
+              <div key={option.id} className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3 cursor-pointer">
+                <RadioGroupItem value={option.id} id={option.id} className="peer border-2 p-2.5 data-[state=checked]:border-[#BD8CBF]" />
+                <label 
+                  htmlFor={option.id} 
+                  className="text-sm text-gray-700 cursor-pointer peer-checked:text-blue-600 peer-checked:font-semibold"
+                >
+                  {option.label}
+                </label>
+                </div>
+                <span className="text-xs rounded-4xl p-2 bg-gray-50 shadow-sm translate text-gray-900">{option.count}</span>
+              </div>
+            ))}
+          </RadioGroup>
         </div>
       </div>
 
       {/* Specialty */}
       <div className="mb-8">
-        <h3 className="text-lg font-bold text-gray-900 mb-4">Specialty</h3>
+        <h3 className="text-lg text-left font-bold text-gray-900 mb-4">Specialty</h3>
         <div className="space-y-3">
           {specialtyOptions.map((option) => (
             <label key={option.id} className="flex items-center gap-3 cursor-pointer">
               <Checkbox
                 checked={selectedSpecialties.includes(option.id)}
+                className=" data-[state=checked]:bg-[#BD8CBF] data-[state=checked]:border-[#BD8CBF]"
                 onCheckedChange={(checked) => {
                   if (checked) {
                     onSpecialtyChange([...selectedSpecialties, option.id])
@@ -79,7 +103,7 @@ export function DoctorsFilterSidebar({
 
       {/* Proximity */}
       <div className="mb-8">
-        <h3 className="text-lg font-bold text-gray-900 mb-4">Proximity (km)</h3>
+        <h3 className="text-lg text-left font-bold text-gray-900 mb-4">Proximity (km)</h3>
         <div className="space-y-4">
           <Slider
             defaultValue={selectedProximity}
@@ -93,12 +117,13 @@ export function DoctorsFilterSidebar({
 
       {/* Rating */}
       <div>
-        <h3 className="text-lg font-bold text-gray-900 mb-4">Rating</h3>
+        <h3 className="text-lg text-left font-bold text-gray-900 mb-4">Rating</h3>
         <div className="space-y-3">
           {ratingOptions.map((option) => (
             <label key={option.id} className="flex items-center gap-3 cursor-pointer">
               <Checkbox
                 checked={selectedRating.includes(option.value)}
+                className=" data-[state=checked]:bg-[#BD8CBF] data-[state=checked]:border-[#BD8CBF]"
                 onCheckedChange={(checked) => {
                   if (checked) {
                     onRatingChange([...selectedRating, option.value])

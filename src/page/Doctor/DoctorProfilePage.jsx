@@ -66,8 +66,8 @@ export function DoctorProfilePage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="grow px-0 md:px-14 lg:px-24">
-        <div className="bg-white mx-auto px-4 py-4 border-b border-gray-200">
+      <main className="grow bg-gray-50 px-0 md:px-14 lg:px-24">
+        <div className=" mx-auto px-4 py-4  border-gray-200">
             <div className="mx-auto px-4 py-4 text-left">
                 {/* breadcrumb text */}
                 <Breadcrumb className="text-xs text-gray-600">

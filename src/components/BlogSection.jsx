@@ -29,7 +29,7 @@ export function BlogSection() {
   ]
 
   return (
-    <section className="w-full py-16 md:py-24 bg-white">
+    <section className="w-full py-16 md:py-24 ">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="flex flex-col items-center gap-4 mb-12">
@@ -41,7 +41,7 @@ export function BlogSection() {
         </div>
 
         {/* Blog Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+        <div className="flex items-center flex-wrap gap-4 justify-center">
           {blogPosts.map((post) => (
             <BlogCard
               key={post.id}

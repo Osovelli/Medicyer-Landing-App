@@ -43,12 +43,12 @@ export function FeatureCard({
       </div>
 
       {/* Body */}
-      <div className="px-[18px] pt-4 pb-5">
+      <div className="text-left px-[18px] pt-4 pb-5">
         <p className="text-xs font-medium text-slate-400 dark:text-slate-500 mb-1 tracking-wide">
           {category}
         </p>
 
-        <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 mb-2.5 leading-tight">
+        <h3 className="text-xl font-bold text-sky dark:text-slate-100 mb-2.5 leading-tight">
           {name}
         </h3>
 

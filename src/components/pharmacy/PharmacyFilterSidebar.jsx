@@ -1,5 +1,6 @@
 import { Checkbox } from "@/components/ui/checkbox"
 import { Slider } from "@/components/ui/slider"
+import { Star } from "lucide-react"
 
 export function PharmacyFilterSidebar({
   onProximityChange,
@@ -25,54 +26,12 @@ export function PharmacyFilterSidebar({
     { id: "5", label: "5 Stars", value: 5 },
     { id: "4", label: "4+ Stars", value: 4 },
     { id: "3", label: "3+ Stars", value: 3 },
+    { id: "2", label: "2+ Stars", value: 2 },
+    { id: "1", label: "1+ Stars", value: 1 },
   ]
 
   return (
-    <aside className="w-full md:w-72 bg-white shadow-sm rounded-lg p-6 border border-gray-200">
-      {/* Availability */}
-     {/*  <div className="mb-8">
-        <h3 className="text-lg font-bold text-gray-900 mb-4">Availability</h3>
-        <div className="space-y-3">
-          {availabilityOptions.map((option) => (
-            <label key={option.id} className="flex items-center gap-3 cursor-pointer">
-              <Checkbox
-                checked={selectedAvailability.includes(option.id)}
-                onCheckedChange={(checked) => {
-                  if (checked) {
-                    onAvailabilityChange([...selectedAvailability, option.id])
-                  } else {
-                    onAvailabilityChange(selectedAvailability.filter((id) => id !== option.id))
-                  }
-                }}
-              />
-              <span className="text-sm text-gray-700">{option.label}</span>
-            </label>
-          ))}
-        </div>
-      </div> */}
-
-      {/* Specialty */}
-      {/* <div className="mb-8">
-        <h3 className="text-lg font-bold text-gray-900 mb-4">Specialty</h3>
-        <div className="space-y-3">
-          {specialtyOptions.map((option) => (
-            <label key={option.id} className="flex items-center gap-3 cursor-pointer">
-              <Checkbox
-                checked={selectedSpecialties.includes(option.id)}
-                onCheckedChange={(checked) => {
-                  if (checked) {
-                    onSpecialtyChange([...selectedSpecialties, option.id])
-                  } else {
-                    onSpecialtyChange(selectedSpecialties.filter((id) => id !== option.id))
-                  }
-                }}
-              />
-              <span className="text-sm text-gray-700">{option.label}</span>
-            </label>
-          ))}
-        </div>
-      </div> */}
-
+    <aside className="w-full bg-white xl:w-72 shadow-sm rounded-lg p-6">
       {/* Proximity */}
       <div className="mb-8">
         <h3 className="text-lg font-bold text-gray-900 mb-4">Proximity (km)</h3>
@@ -90,10 +49,11 @@ export function PharmacyFilterSidebar({
       {/* Rating */}
       <div>
         <h3 className="text-lg font-bold text-gray-900 mb-4">Rating</h3>
-        <div className="space-y-3">
+        <div className="space-y-3 w-full">
           {ratingOptions.map((option) => (
-            <label key={option.id} className="flex items-center gap-3 cursor-pointer">
+            <label key={option.id} className="flex flex-wrap  items-center gap-3 cursor-pointer">
               <Checkbox
+              className='data-[state=checked]:bg-[#BD8CBF] data-state:checked:border-[#BD8CBF] data-[state=checked]:border-[#BD8CBF]'
                 checked={selectedRating.includes(option.value)}
                 onCheckedChange={(checked) => {
                   if (checked) {
@@ -103,13 +63,13 @@ export function PharmacyFilterSidebar({
                   }
                 }}
               />
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 ">
                 {[...Array(option.value)].map((_, i) => (
                   <span key={i} className="text-yellow-400">
-                    ★
+                    <Star className="w-4 h-4" fill="#FFCB00" />
                   </span>
                 ))}
-                <span className="text-sm text-gray-700 ml-2">{option.label}</span>
+                {/* <span className="text-sm text-gray-700 ml-2">{option.label}</span> */}
               </div>
             </label>
           ))}

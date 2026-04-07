@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Heart, Minus, Plus } from "lucide-react"
+import { Heart, Minus, Plus, StarIcon } from "lucide-react"
+import { Heart2Icon } from "../custom/Icons"
+import { CustomButton } from "../custom/CustomButton"
 
 export function DrugDetailsInfo({
   name,
@@ -32,8 +34,8 @@ export function DrugDetailsInfo({
         <div className="text-emerald-600 font-normal text-sm">+{loyaltyPoints} points</div>
 
         {/* Rating */}
-        <div className="flex items-center gap-1 bg-yellow-100 px-3 py-1 rounded-full whitespace-nowrap">
-          <span className="text-lg">⭐</span>
+        <div className="flex items-center gap-1  px-3 py-1 rounded-full whitespace-nowrap">
+          <StarIcon fill='#F0D869' stroke="#F0D869" className={'w-6 h-6'} />
           <span className="font-semibold text-gray-900">{rating}</span>
         </div>
       </div>
@@ -43,19 +45,19 @@ export function DrugDetailsInfo({
         <div className="text-2xl font-normal text-sky">₦ {price.toLocaleString()}</div>
 
         {/* Quantity selector */}
-        <div className="flex items-center gap-3 bg-gray-100 rounded-lg px-2 py-1">
+        <div className="flex items-center gap-3 rounded-lg px-2 py-1">
           <button
             onClick={() => handleQuantityChange(-1)}
-            className="flex items-center justify-center w-7 h-7 text-gray-600 hover:text-gray-900 transition-colors"
+            className="flex items-center rounded-4xl bg-gray-100 justify-center w-8 h-8 text-gray-600 hover:text-gray-900 transition-colors"
           >
-            <Minus className="w-4 h-4" />
+            <Minus className="w-4 h-4 text-red-500" />
           </button>
           <span className="font-semibold text-gray-900 px-2">{quantity}</span>
           <button
             onClick={() => handleQuantityChange(1)}
-            className="flex items-center justify-center w-7 h-7 text-gray-600 hover:text-gray-900 transition-colors"
+            className="flex items-center rounded-4xl bg-gray-100 justify-center w-8 h-8 text-gray-600 hover:text-gray-900 transition-colors"
           >
-            <Plus className="w-4 h-4" />
+            <Plus className="w-4 h-4 text-green-500" />
           </button>
         </div>
       </div>
@@ -73,18 +75,19 @@ export function DrugDetailsInfo({
       <div className="flex gap-3 pt-4">
         <button
           onClick={() => setIsWishlisted(!isWishlisted)}
-          className={`flex items-center justify-center w-12 h-12 rounded-lg border transition-colors ${
+          className={`flex items-center justify-center w-12 h-12 rounded-lg border border-sky transition-colors ${
             isWishlisted ? "bg-red-50 border-red-200" : "border-gray-200 hover:bg-gray-50"
           }`}
         >
-          <Heart className={`w-5 h-5 ${isWishlisted ? "fill-red-500 text-red-500" : "text-gray-600"}`} />
+          <Heart2Icon className={`w-5 h-5 ${isWishlisted ? "fill-red-500 text-red-500" : "text-gray-600"}`} />
         </button>
-        <Button
+        <CustomButton
+          
           onClick={() => onAddToCart(quantity)}
-          className="flex-1 bg-[#1a1a4d] hover:bg-[#0f0f2e] text-white rounded-lg h-12 font-semibold"
+          className="flex-1 hover:bg-blue-900 text-white rounded-lg h-12 font-semibold"
         >
           Add to Cart
-        </Button>
+        </CustomButton>
       </div>
     </div>
   )

@@ -190,8 +190,8 @@ export function DoctorsGrid({
 
   return (
     <div className="space-y-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredDoctors.map((doctor) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+        {DOCTORS_DATA.map((doctor) => (
           <DoctorCard
             key={doctor.id}
             imageUrl={doctor.imageUrl}

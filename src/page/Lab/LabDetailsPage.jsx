@@ -38,6 +38,7 @@ import { ScheduleSelector } from "@/components/custom/ScheduleSelector";
 import { useNavigate } from "react-router-dom";
 import { SaveModal } from "@/components/lab/SaveTestModal";
 import { ItemAddedModal } from "@/components/lab/ItemAddedModal";
+import { ChatNotification2Icon, MapLocationIcon, PhoneCallIcon } from "@/components/custom/Icons";
 
 // ─── Sample data ──────────────────────────────────────────────
 const CATEGORIES = [
@@ -93,10 +94,10 @@ const REVIEW_DATA = {
 };
 
 const ACTIONS = [
-  { id: "call", icon: Phone, label: "Call", color: "text-blue-600 dark:text-blue-400" },
-  { id: "chat", icon: MessageCircle, label: "Chat", color: "text-green-600 dark:text-green-400" },
-  { id: "direction", icon: Navigation, label: "Direction", color: "text-orange-500 dark:text-orange-400" },
-  { id: "share", icon: Share2, label: "Share", color: "text-violet-600 dark:text-violet-400" },
+  { id: "chat", icon: ChatNotification2Icon, label: "Chat", color: "text-green-600 dark:text-green-400" },
+  { id: "call", icon: PhoneCallIcon, label: "Call", color: "text-blue-600 dark:text-blue-400" },
+  { id: "direction", icon: MapLocationIcon, label: "Direction", color: "text-orange-500 dark:text-orange-400" },
+  { id: "share", icon: Share2, label: "Share", color: "text-sky dark:text-violet-400" },
 ];
 
 
@@ -143,210 +144,212 @@ export default function LabDetailPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
         <Header isLoggedIn={true} userName="Tobi Dev" />
-        {/* Breadcrumb */}
-        <div className="bg-white mx-auto px-4 py-4 border-b border-gray-200">
-            <div className="mx-auto px-4 py-4 text-left">
-                {/* breadcrumb text */}
-                <Breadcrumb className="text-xs text-gray-600">
-                    <BreadcrumbList className={"gap-1"}>
-                        <BreadcrumbItem>
-                            <BreadcrumbLink href="/">Home</BreadcrumbLink>
-                        </BreadcrumbItem>
-                        <BreadcrumbSeparator />
-                        <BreadcrumbItem>
-                            <DropdownMenu>
-                                <DropdownMenuTrigger className="flex items-center gap-1">
-                                    <BreadcrumbEllipsis className="size-4" />
-                                    <span className="sr-only">Toggle menu</span>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent align="start">
-                                    <DropdownMenuItem>Pharmacy</DropdownMenuItem>
-                                    <DropdownMenuItem onClick={() => navigate('/hospitals')}>
-                                        Hospital
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem>Donor</DropdownMenuItem>
-                                </DropdownMenuContent>
-                            </DropdownMenu>
-                        </BreadcrumbItem>
-                        <BreadcrumbSeparator />
-                        <BreadcrumbItem>
-                            <BreadcrumbLink href="/labs">Labs</BreadcrumbLink>
-                        </BreadcrumbItem>
-                        <BreadcrumbSeparator />
-                        <BreadcrumbItem>
-                            <BreadcrumbLink href="/labs/details">Details</BreadcrumbLink>
-                        </BreadcrumbItem>
-                        {/* <BreadcrumbSeparator />
-                        <BreadcrumbItem>
-                            <BreadcrumbLink href="/doctors/cardiologist">Cardiologist</BreadcrumbLink>
-                        </BreadcrumbItem> */}
-                    </BreadcrumbList>
-                </Breadcrumb>
-            </div>
-        </div>
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6">
-
-        {/*Two-column grid*/}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-6 xl:gap-8">
-
-          {/*LEFT COLUMN*/}
-          <div className="min-w-0">
-
-            {/* Category filter pills */}
-            <CategoryFilter
-              categories={CATEGORIES}
-              activeCategory={activeCategory}
-              onCategoryChange={setActiveCategory}
-              className="mb-6"
-            />
-
-            {/* Test cards grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-              {filteredTests.map((test) => (
-                <TestCard   
-                  key={test.id}
-                  title={test.title}
-                  price={test.price}
-                  originalPrice={test.originalPrice}
-                  points={test.points}
-                  serviceType={test.serviceType}
-                  onBook={() => handleBook({
-                    title: "Liver Function Tests (LFT)",
-                    category: "Routine Tests",
-                    price: 15000,
-                    points: 12,
-                    homeServiceFee: 4000,
-                  }
-                  )}
-                  onSave={() => handleSave(test)}
-                />
-              ))}
-            </div>
-
-            {filteredTests.length === 0 && (
-              <div className="text-center py-16 text-slate-400 dark:text-slate-500 text-sm">
-                No tests available in this category.
+        <div className="max-w-7xl mx-auto">
+          {/* Breadcrumb */}
+          <div className=" px-4 py-4 border-b border-gray-200">
+              <div className="mx-auto px-4 py-4 text-left">
+                  {/* breadcrumb text */}
+                  <Breadcrumb className="text-xs text-gray-600">
+                      <BreadcrumbList className={"gap-1"}>
+                          <BreadcrumbItem>
+                              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                          </BreadcrumbItem>
+                          <BreadcrumbSeparator />
+                          <BreadcrumbItem>
+                              <DropdownMenu>
+                                  <DropdownMenuTrigger className="flex items-center gap-1">
+                                      <BreadcrumbEllipsis className="size-4" />
+                                      <span className="sr-only">Toggle menu</span>
+                                  </DropdownMenuTrigger>
+                                  <DropdownMenuContent align="start">
+                                      <DropdownMenuItem>Pharmacy</DropdownMenuItem>
+                                      <DropdownMenuItem onClick={() => navigate('/hospitals')}>
+                                          Hospital
+                                      </DropdownMenuItem>
+                                      <DropdownMenuItem>Donor</DropdownMenuItem>
+                                  </DropdownMenuContent>
+                              </DropdownMenu>
+                          </BreadcrumbItem>
+                          <BreadcrumbSeparator />
+                          <BreadcrumbItem>
+                              <BreadcrumbLink href="/labs">Labs</BreadcrumbLink>
+                          </BreadcrumbItem>
+                          <BreadcrumbSeparator />
+                          <BreadcrumbItem>
+                              <BreadcrumbLink href="/labs/details">Details</BreadcrumbLink>
+                          </BreadcrumbItem>
+                          {/* <BreadcrumbSeparator />
+                          <BreadcrumbItem>
+                              <BreadcrumbLink href="/doctors/cardiologist">Cardiologist</BreadcrumbLink>
+                          </BreadcrumbItem> */}
+                      </BreadcrumbList>
+                  </Breadcrumb>
               </div>
-            )}
           </div>
+          <div className="px-4 sm:px-6 lg:px-8 py-4 md:py-6">
 
-          {/* ═══ RIGHT COLUMN (Sidebar) ═══ */}
-          <aside className="space-y-5 lg:sticky lg:top-6 lg:self-start">
+            {/*Two-column grid*/}
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-6 xl:gap-8">
 
-            {/* About */}
-            <Card className="border-slate-100 dark:border-slate-700 shadow-none">
-              <CardHeader className="pb-2 px-5 pt-5">
-                <CardTitle className="text-base font-bold text-slate-900 dark:text-slate-100">
-                  About
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="px-5 pb-5">
-                <p
-                  className={cn(
-                    "text-sm text-slate-500 dark:text-slate-400 leading-relaxed",
-                    !aboutExpanded && "line-clamp-4"
-                  )}
-                >
-                  Consectetur dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur.
-                </p>
-                <button
-                  onClick={() => setAboutExpanded(!aboutExpanded)}
-                  className="text-xs font-semibold text-blue-600 dark:text-blue-400 mt-2 hover:underline"
-                >
-                  {aboutExpanded ? "See less" : "See more"}
-                </button>
-              </CardContent>
-            </Card>
+              {/*LEFT COLUMN*/}
+              <div className="min-w-0">
 
-            {/* Action buttons */}
-            <Card className="border-slate-100 dark:border-slate-700 shadow-none">
-              <CardContent className="px-5 py-5">
-                <div className="flex items-center justify-around">
-                  {ACTIONS.map(({ id, icon: Icon, label, color }) => (
-                    <button
-                      key={id}
-                      onClick={() => handleAction(id)}
-                      className="flex flex-col items-center gap-1.5 group"
-                    >
-                      <div
-                        className={cn(
-                          "w-11 h-11 rounded-full flex items-center justify-center",
-                          "bg-slate-100 dark:bg-slate-700",
-                          "group-hover:bg-slate-200 dark:group-hover:bg-slate-600",
-                          "transition-colors duration-200"
-                        )}
-                      >
-                        <Icon className={cn("w-5 h-5", color)} />
-                      </div>
-                      <span className="text-[11px] font-medium text-slate-600 dark:text-slate-400">
-                        {label}
-                      </span>
-                    </button>
+                {/* Category filter pills */}
+                <CategoryFilter
+                  categories={CATEGORIES}
+                  activeCategory={activeCategory}
+                  onCategoryChange={setActiveCategory}
+                  className="mb-6"
+                />
+
+                {/* Test cards grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                  {filteredTests.map((test) => (
+                    <TestCard   
+                      key={test.id}
+                      title={test.title}
+                      price={test.price}
+                      originalPrice={test.originalPrice}
+                      points={test.points}
+                      serviceType={test.serviceType}
+                      onBook={() => handleBook({
+                        title: "Liver Function Tests (LFT)",
+                        category: "Routine Tests",
+                        price: 15000,
+                        points: 12,
+                        homeServiceFee: 4000,
+                      }
+                      )}
+                      onSave={() => handleSave(test)}
+                    />
                   ))}
                 </div>
-              </CardContent>
-            </Card>
 
-            {/* Schedule */}
-            {/* <ScheduleCard schedule={SCHEDULE} /> */}
-            <ScheduleSelector
-              timeSlots={timeSlots}
-              bookedSlots={bookedSlots}
-              totalSlots={12}
-              selectedDay={selectedDay}
-              selectedTime={selectedTime}
-              onDayChange={setSelectedDay}
-              onTimeChange={setSelectedTime}
+                {filteredTests.length === 0 && (
+                  <div className="text-center py-16 text-slate-400 dark:text-slate-500 text-sm">
+                    No tests available in this category.
+                  </div>
+                )}
+              </div>
+
+              {/* ═══ RIGHT COLUMN (Sidebar) ═══ */}
+              <aside className="space-y-5 lg:sticky lg:top-6 lg:self-start">
+
+                {/* About */}
+                <Card className="border-slate-100 dark:border-slate-700 shadow-none">
+                  <CardHeader className="pb-2 px-5 pt-5">
+                    <CardTitle className="text-base font-bold text-slate-900 dark:text-slate-100">
+                      About
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="px-5 pb-5">
+                    <p
+                      className={cn(
+                        "text-sm text-slate-500 dark:text-slate-400 leading-relaxed",
+                        !aboutExpanded && "line-clamp-4"
+                      )}
+                    >
+                      Consectetur dolor sit amet, consectetur adipiscing elit, sed
+                      do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                      Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                      laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                      irure dolor in reprehenderit in voluptate velit esse cillum
+                      dolore eu fugiat nulla pariatur.
+                    </p>
+                    <button
+                      onClick={() => setAboutExpanded(!aboutExpanded)}
+                      className="text-xs font-semibold text-blue-600 dark:text-blue-400 mt-2 hover:underline"
+                    >
+                      {aboutExpanded ? "See less" : "See more"}
+                    </button>
+                  </CardContent>
+                </Card>
+
+                {/* Action buttons */}
+                <Card className="border-slate-100 dark:border-slate-700 shadow-none">
+                  <CardContent className="px-5 py-5">
+                    <div className="flex items-center justify-around">
+                      {ACTIONS.map(({ id, icon: Icon, label, color }) => (
+                        <button
+                          key={id}
+                          onClick={() => handleAction(id)}
+                          className="flex flex-col items-center gap-1.5 group"
+                        >
+                          <div
+                            className={cn(
+                              "w-14 h-14 rounded-4xl flex items-center justify-center",
+                              "bg-[#92BDF64D] dark:bg-slate-700",
+                              "group-hover:bg-slate-200 dark:group-hover:bg-slate-600",
+                              "transition-colors duration-200"
+                            )}
+                          >
+                            <Icon className={cn("w-5 h-5", color)} />
+                          </div>
+                          <span className="text-[11px] font-medium text-slate-600 dark:text-slate-400">
+                            {label}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Schedule */}
+                {/* <ScheduleCard schedule={SCHEDULE} /> */}
+                <ScheduleSelector
+                  timeSlots={timeSlots}
+                  bookedSlots={bookedSlots}
+                  totalSlots={12}
+                  selectedDay={selectedDay}
+                  selectedTime={selectedTime}
+                  onDayChange={setSelectedDay}
+                  onTimeChange={setSelectedTime}
+                />
+
+                {/* Reviews */}
+                <ReviewSection
+                  averageRating={REVIEW_DATA.averageRating}
+                  totalReviews={REVIEW_DATA.totalReviews}
+                  distribution={REVIEW_DATA.distribution}
+                  onSeeReview={() => navigate("/lab/reviews/all")}
+                />
+              </aside>
+            </div>
+            <BookingModal
+                open={bookingOpen}
+                onOpenChange={setBookingOpen}
+                test={selectedTest}
+                lab={{
+                    name: "Jasiri Med Laboratory",
+                    address: "No 26, 62 Road, off 6th Ave. Gwarimpa – Abuja, NG",
+                    rating: "3.5",
+                    reviewCount: "503",
+                }}
+                onComplete={(dest) => {
+                    // dest = "bookings" | "home"
+                    // navigate accordingly
+                }}
             />
 
-            {/* Reviews */}
-            <ReviewSection
-              averageRating={REVIEW_DATA.averageRating}
-              totalReviews={REVIEW_DATA.totalReviews}
-              distribution={REVIEW_DATA.distribution}
-              onSeeReview={() => navigate("/lab/reviews/all")}
+            {/* Item Added Modal */}
+            <ItemAddedModal
+                open={itemAddedModalOpen}
+                onOpenChange={setItemAddedModalOpen}
+                onSeeFile={handleSeeFile}
             />
-          </aside>
+                
+                {/* Save Modal */}
+                <SaveModal
+                  open={saveModalOpen}
+                  onOpenChange={setSaveModalOpen}
+                  savedTests={savedTests}
+                />
+          </div>
+          {/* Blog Section */}
+          <div className="">
+            <BlogSection />
+          </div>
         </div>
-        <BookingModal
-            open={bookingOpen}
-            onOpenChange={setBookingOpen}
-            test={selectedTest}
-            lab={{
-                name: "Jasiri Med Laboratory",
-                address: "No 26, 62 Road, off 6th Ave. Gwarimpa – Abuja, NG",
-                rating: "3.5",
-                reviewCount: "503",
-            }}
-            onComplete={(dest) => {
-                // dest = "bookings" | "home"
-                // navigate accordingly
-            }}
-        />
-
-        {/* Item Added Modal */}
-        <ItemAddedModal
-            open={itemAddedModalOpen}
-            onOpenChange={setItemAddedModalOpen}
-            onSeeFile={handleSeeFile}
-        />
-            
-            {/* Save Modal */}
-            <SaveModal
-              open={saveModalOpen}
-              onOpenChange={setSaveModalOpen}
-              savedTests={savedTests}
-            />
-      </div>
-      {/* Blog Section */}
-      <div className="">
-        <BlogSection />
-      </div>
       {/* Footer */}
       <Footer />
     </div>

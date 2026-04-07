@@ -24,7 +24,7 @@ export function CategoryFilter({
               "border transition-all duration-200 whitespace-nowrap",
               isActive
                 ? "bg-[#1C2A3D] dark:bg-blue-600 text-white border-transparent shadow-sm"
-                : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-300 dark:hover:border-slate-500 hover:bg-slate-50 dark:hover:bg-slate-700"
+                : "bg-[#F3F3FF] dark:bg-slate-800 text-sky dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-300 dark:hover:border-slate-500 hover:bg-slate-50 dark:hover:bg-slate-700"
             )}
           >
             {cat.label}
