@@ -1,5 +1,6 @@
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { CustomButton } from "../custom/CustomButton";
 
 export function AddCartModal({ open, onOpenChange, onSeeCart }) {
     return (
@@ -14,18 +15,18 @@ export function AddCartModal({ open, onOpenChange, onSeeCart }) {
                 <h3 className="font-semibold text-2xl text-sky mt-4">Item Added to Cart</h3>
                 <p className="text-base font-normal text-gray-500">Your selected product has been added to your cart successfully.</p>
                 <div className="flex mt-6 gap-4 justify-center">
-                    <Button 
+                    <CustomButton 
                     variant={'outline'} 
                     onClick={onSeeCart}
                     className={'w-32 md:w-48 h-14 border'}
                     >
                         See Cart
-                    </Button>
-                    <Button 
+                    </CustomButton>
+                    <CustomButton 
                     onClick={() => onOpenChange(false)} 
                     className="bg-sky w-32 md:w-58 h-14 text-white hover:bg-sky/80">
                         Home
-                    </Button>
+                    </CustomButton>
                 </div>
             </DialogContent>
         </Dialog>

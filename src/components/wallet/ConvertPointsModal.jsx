@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Modal from '../custom/Modal';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
+import { CustomButton } from '../custom/CustomButton';
 
 const ConvertPointsModal = ({ isOpen, onOpenChange, onProceed }) => {
   const [points, setPoints] = useState('');
@@ -24,21 +25,21 @@ const ConvertPointsModal = ({ isOpen, onOpenChange, onProceed }) => {
         <p className="text-xs font-normal text-left mt-2">Conversion rates details goes here & more. Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
       </div>
       <div className="mt-4 flex gap-2 justify-between">
-        <Button
+        <CustomButton
             variant={'outline'}
             onClick={() => onOpenChange(false)} 
-            className="flex-1 border p-4 rounded-lg hover:bg-gray-100"
-            size={'xl'}
+            className="border px-6 border-sky rounded-lg hover:bg-gray-100"
+            size={'lg'}
         >
             No, Cancel
-        </Button>
-        <Button 
+        </CustomButton>
+        <CustomButton 
             onClick={handleProceed} 
             className="flex-1 bg-sky text-white hover:bg-blue-950 rounded-lg p-4" 
-            size={'xl'}
+            size={'lg'}
         >
             Yes, Proceed
-        </Button>
+        </CustomButton>
       </div>
     </Modal>
   );

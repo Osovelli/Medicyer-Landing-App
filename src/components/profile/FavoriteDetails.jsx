@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Trash2, Bell } from 'lucide-react';
 import { DrugCard } from '@/components/drugs/DrugCard';
 import { BloodBankCard } from '@/components/bloodbank/BloodBankCard';
+import { Card } from '../ui/card';
 
 export default function FavouriteDetails() {
   const [favourites, setFavourites] = useState([
@@ -12,7 +13,7 @@ export default function FavouriteDetails() {
       description: 'These are products with both Type A and Type B antigens, making them unique. AB+ recipients can use all, while...',
       price: 5000,
       points: 12,
-      icon: '🩸'
+      icon: '/blooddrop.svg',
     },
     {
       id: 2,
@@ -30,7 +31,7 @@ export default function FavouriteDetails() {
       description: 'These are products with both Type A and Type B antigens, making them unique. AB+ recipients can use all, while...',
       price: 5000,
       points: 12,
-      icon: '🩸'
+      icon: '/blooddrop.svg'
     },
     {
       id: 4,
@@ -43,6 +44,15 @@ export default function FavouriteDetails() {
     },
     {
       id: 5,
+      type: 'blood-bank',
+      title: 'A+ and A-',
+      description: 'These are products with both Type A and Type B antigens, making them unique. AB+ recipients can use all, while...',
+      price: 5000,
+      points: 12,
+      icon: '/blooddrop.svg'
+    },
+    {
+      id: 6,
       type: 'drug',
       title: 'Ampicilyn 450 MG',
       description: 'Measures the levels of substances in your blood...',
@@ -101,9 +111,9 @@ export default function FavouriteDetails() {
       </div>
 
       {/* Favourite Items Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
         {favourites.map((item) => (
-          <div key={item.id} className="relative peer border rounded-lg p-4 hover:shadow-sm transition-shadow">
+          <Card key={item.id} className="relative  peer group border rounded-lg p-2 hover:shadow-sm transition-shadow">
             {item.type === 'drug' ? (
               <DrugCard 
               item={item}
@@ -112,7 +122,8 @@ export default function FavouriteDetails() {
               description={item?.description} 
               imageUrl={item?.image}
               onAddToCart={() => handleAddCart(item)}
-              onRemove={() => handleRemoveFavourite(item.id)} 
+              onRemove={() => handleRemoveFavourite(item.id)}
+              className={'h-[350px] gap-3'}
               />
             ) : (
               <BloodBankCard
@@ -121,9 +132,10 @@ export default function FavouriteDetails() {
                 price={item?.price}
                 points={item?.points}
                 image={item?.image}
-               onRemove={() => handleRemoveFavourite(item.id)} />
+                className={'h-[350px]'}
+                onRemove={() => handleRemoveFavourite(item.id)} />
             )}
-          </div>
+          </Card>
         ))}
       </div>
     </div>

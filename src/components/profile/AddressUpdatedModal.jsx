@@ -1,12 +1,13 @@
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { SuccessIcon } from '../custom/Icons';
 import { Button } from '../ui/button';
+import { CustomButton } from '../custom/CustomButton';
 
 export default function AddressUpdatedModal({ isOpen, onClose }) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-md">
-        <div className="flex flex-col items-center py-8">
+        <div className="flex flex-col items-center py-2">
           {/* Checkmark Icon */}
           <div className="mb-6 flex justify-center">
             <div className="w-20 h-20 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-4">
@@ -25,13 +26,13 @@ export default function AddressUpdatedModal({ isOpen, onClose }) {
           </p>
 
           {/* Home Button */}
-          <Button
+          <CustomButton
             onClick={onClose}
-            className="w-full px-6 py-4 bg-sky hover:bg-blue-950 text-white font-semibold rounded-lg transition-colors"
-            size={'xl'}
+            className="w-full px-6 py-4 bg-sky hover:bg-blue-900 text-white font-semibold rounded-lg transition-colors"
+            size={'lg'}
           >
             Home
-          </Button>
+          </CustomButton>
         </div>
       </DialogContent>
     </Dialog>

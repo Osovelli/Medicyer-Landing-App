@@ -229,3 +229,90 @@ export const Cart2Icon = ({ className, ...props}) => (
      />
   )
 
+  export const HeartInHandIcon = ({ className, ...props }) => (
+    <img
+    src="/heart hand.svg"
+    alt="heart in hand icon"
+    className={`w-5 h-5 dark:text-red-500 ${className || ""}`}
+     {...props}
+     />
+  )
+
+  export const DropletIcon = ({ className, ...props }) => (
+    <img
+    src="/Droplet.svg"
+    alt="droplet icon"
+    className={`w-5 h-5 dark:text-red-500 ${className || ""}`}
+     {...props}
+     />
+  )
+
+  export const UserRoundedIcon = ({ className, ...props }) => (
+    <img
+    src="/user round.svg"
+    alt="user rounded icon"
+    className={`w-5 h-5 dark:text-gray-400 ${className || ""}`}
+     {...props}
+     />
+  )
+
+  export const HelpIcon = ({ className, ...props }) => (
+    <img
+    src="/help.svg"
+    alt="help icon"
+    className={`w-5 h-5 dark:text-gray-400 ${className || ""}`}
+     {...props}
+     />
+  )
+
+  export const LockIcon = ({ className, ...props }) => (
+    <img
+    src="/lock.svg"
+    alt="lock icon"
+    className={`w-5 h-5 dark:text-gray-400 ${className || ""}`}
+     {...props}
+     />
+  )
+
+  export const LocationIcon = ({ className, ...props }) => (
+    <img
+    src="/location.svg"
+    alt="location icon"
+    className={`w-5 h-5 dark:text-blue-500 ${className || ""}`}
+     {...props}
+     />
+  )
+
+  export const CreditIcon = ({ className, ...props }) => (
+    <img
+    src="/credit.svg"
+    alt="credit icon"
+    className={`w-5 h-5 dark:text-green-500 ${className || ""}`}
+     {...props}
+     />
+  )
+
+  export const DebitIcon = ({ className, ...props }) => (
+    <img
+    src="/debit.svg"
+    alt="debit icon"
+    className={`w-5 h-5 dark:text-red-500 ${className || ""}`}
+     {...props}
+     />
+  )
+
+  export const ReloadIcon = ({ className, ...props }) => (
+    <img
+    src="/reload.svg"
+    alt="reload icon"
+    className={`w-5 h-5 dark:text-gray-400 ${className || ""}`}
+     {...props}
+     />
+  )
+
+  export const TopUpIcon = ({ className }) => (
+    <svg className={`w-5 h-5 dark:text-gray-400 ${className || ""}`} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10 8L10 14M10 14H16M10 14L21 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12 5H7C4.79086 5 3 6.79086 3 9V17C3 19.2091 4.79086 21 7 21H15C17.2091 21 19 19.2091 19 17V12" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  )

@@ -1,6 +1,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '../ui/button';
 import { SuccessIcon } from '../custom/Icons';
+import { CustomButton } from '../custom/CustomButton';
 
 export default function DeleteConfirmationModal({ isOpen, onClose, onConfirm }) {
   return (
@@ -20,21 +21,21 @@ export default function DeleteConfirmationModal({ isOpen, onClose, onConfirm }) 
             <p className='text-center text-sky text-sm font-normal'>Your selected product has been added to your cart successfully. </p>
           
           <div className="flex w-full gap-3 pt-4">
-            <Button 
+            <CustomButton 
             onClick={onConfirm} 
             variant="outline" 
-            className="flex-1 p-4"
+            className="px-10"
             size={'xl'}
             >
               Yes, Delete
-            </Button>
-            <Button 
+            </CustomButton>
+            <CustomButton 
             onClick={onClose} 
             className="flex-1 bg-sky p-4 hover:bg-blue-950"
             size={'xl'}
             >
               Home
-            </Button>
+            </CustomButton>
           </div>
         </div>
       </DialogContent>

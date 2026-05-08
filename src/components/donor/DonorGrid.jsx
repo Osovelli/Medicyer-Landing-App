@@ -99,7 +99,7 @@ const DonorGrid = ({ selectedBloodType=[], selectedStatus=[] }) => {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-6">
         {filteredDonors.map((donor) => (
           <DonorCard key={donor.id} donor={donor} onCardClick={handleCardClick} />
         ))}

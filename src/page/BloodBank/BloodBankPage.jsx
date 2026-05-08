@@ -23,10 +23,12 @@ export default function BloodBankPage() {
   const [selectedRating, setSelectedRating] = useState([])
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#FAFAFA]">
       <Header isLoggedIn={true} userName="Tobi Dev" />
-      {/* Breadcrumb */}
-        <div className="bg-white mx-auto px-4 py-4 border-b border-gray-200">
+      <div className="max-w-7xl mx-auto">
+
+        {/* Breadcrumb */}
+        <div className="px-4 py-4 border-b border-gray-200">
             <div className="mx-auto px-4 py-4 text-left">
                 {/* breadcrumb text */}
                 <Breadcrumb className="text-xs text-gray-600">
@@ -67,89 +69,90 @@ export default function BloodBankPage() {
             </div>
         </div>
 
-      {/* Hero Banner */}
-      <section className="relative bg-gray-900 h-80 text-white py-16 m-6 rounded-2xl">
-        <img src="/hospital.jpg" alt="sampling" className="absolute inset-0 object-cover w-full h-full opacity-60 rounded-lg" />
-      </section>
+        {/* Hero Banner */}
+        <section className="relative bg-gray-900 h-80 text-white py-6 m-6 rounded-2xl">
+          <img src="/hospital.jpg" alt="sampling" className="absolute inset-0 object-cover w-full h-full opacity-60 rounded-lg" />
+        </section>
 
-      {/* Main Content */}
-      <main className="mx-auto px-4 py-16 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-0">
-        
-        <div className="col-span-1 p-2 sm:col-span-1">
-          {/* Sidebar */}
-          <BloodBankFilterSidebar
-            onProximityChange={setProximityRange}
-            selectedProximity={selectedProximity}
-            onRatingChange={setSelectedRating}
-            proximityRange={proximityRange}
-            selectedRating={selectedRating}
-          />
-        </div>
-        {/* Featured Labs with Filter Sidebar */}
-        <div className="col-span-3 sm:col-span-2 lg:col-span-3">
-          <div className="flex flex-col">
-            {/* Featured Labs Content */}
-            <div className="">
-              <FeaturedBloodBanks
-              proximityRange={proximityRange} 
+        {/* Main Content */}
+        <main className="mx-auto px-4 py-16 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-0">
+          
+          <div className="col-span-1 p-2 sm:col-span-1">
+            {/* Sidebar */}
+            <BloodBankFilterSidebar
+              onProximityChange={setProximityRange}
+              selectedProximity={selectedProximity}
+              onRatingChange={setSelectedRating}
+              proximityRange={proximityRange}
               selectedRating={selectedRating}
-              />
-            </div>
-            {/* Curated Labs */}
-
-            {/* <div className="">
-              <CuratedLabs />
-            </div> */}
-            <div className="mt-15">
-              {/* Header */}
-              <div className="flex items-baseline justify-between mb-5 px-0.5">
-                <h2 className=" text-[28px] md:text-[32px] font-semibold text-slate-800 dark:text-slate-200">
-                  Curated for you
-                </h2>
-                <a
-                  href="#"
-                  className="text-[13px] font-semibold tracking-[1.8px] uppercase text-slate-800 dark:text-slate-300 hover:opacity-70 transition-opacity"
-                >
-                  Explore
-                </a>
-              </div>
-              <BloodbanksGrid
-                selectedProximity={selectedProximity}
-                selectedRating={selectedRating}
-              />
-
-              {/* Medical Checkups CTA */}
-              <div className="py-12">
-                <div>
-                  <img src="/medical banner.png" alt="Medical Checkup CTA" className="w-full rounded-2xl my-12" />
-                </div>
-              </div>
-
-              <BloodbanksGrid
-                selectedProximity={selectedProximity}
-                selectedRating={selectedRating}
-              />
-             <BloodbanksGrid
-                selectedProximity={selectedProximity}
-                selectedRating={selectedRating}
             />
-            </div>
-                        
-            {/* Lab Services */}
-            {/* <div className="py-12">
-              <LabServicesSection />
-            </div> */}
           </div>
-        </div>
-      </main>
-      {/* FAQ Section */}
-      <div className="">
-        <FAQSection />
-      </div>
+          {/* Featured Labs with Filter Sidebar */}
+          <div className="col-span-3 sm:col-span-2 lg:col-span-3">
+            <div className="flex flex-col">
+              {/* Featured Labs Content */}
+              <div className="">
+                <FeaturedBloodBanks
+                proximityRange={proximityRange} 
+                selectedRating={selectedRating}
+                />
+              </div>
+              {/* Curated Labs */}
 
-      {/* Blog Section */}
-      <div className="">
-        <BlogSection />
+              {/* <div className="">
+                <CuratedLabs />
+              </div> */}
+              <div className="mt-15">
+                {/* Header */}
+                <div className="flex items-baseline justify-between mb-5 px-0.5">
+                  <h2 className=" text-[28px] md:text-[32px] font-semibold text-slate-800 dark:text-slate-200">
+                    Curated for you
+                  </h2>
+                  <a
+                    href="#"
+                    className="text-[13px] font-semibold tracking-[1.8px] uppercase text-slate-800 dark:text-slate-300 hover:opacity-70 transition-opacity"
+                  >
+                    Explore
+                  </a>
+                </div>
+                <BloodbanksGrid
+                  selectedProximity={selectedProximity}
+                  selectedRating={selectedRating}
+                />
+
+                {/* Medical Checkups CTA */}
+                <div className="py-12">
+                  <div>
+                    <img src="/medical banner.png" alt="Medical Checkup CTA" className="w-full rounded-2xl my-12" />
+                  </div>
+                </div>
+
+                <BloodbanksGrid
+                  selectedProximity={selectedProximity}
+                  selectedRating={selectedRating}
+                />
+              <BloodbanksGrid
+                  selectedProximity={selectedProximity}
+                  selectedRating={selectedRating}
+              />
+              </div>
+                          
+              {/* Lab Services */}
+              {/* <div className="py-12">
+                <LabServicesSection />
+              </div> */}
+            </div>
+          </div>
+        </main>
+        {/* FAQ Section */}
+        <div className="">
+          <FAQSection />
+        </div>
+
+        {/* Blog Section */}
+        <div className="">
+          <BlogSection />
+        </div>
       </div>
       {/* Footer */}
       <Footer />

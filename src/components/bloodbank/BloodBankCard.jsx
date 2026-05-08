@@ -1,6 +1,7 @@
 import { Heart, HeartPlus } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '../ui/button';
+import { CustomButton } from '../custom/CustomButton';
 
 export function BloodBankCard({
   title,
@@ -9,6 +10,7 @@ export function BloodBankCard({
   points,
   onBook,
   onSave,
+  className,
 }) {
   const [isLiked, setIsLiked] = useState(false);
 
@@ -18,7 +20,7 @@ export function BloodBankCard({
   };
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+    <div className={`bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow ${className}`}>
       {/* Icon Section */}
       <div className="p-4 flex items-center h-24">
           <img src="/blooddrop.svg" alt="Blood Drop Icon" className="w-12 h-12 text-red-600" />
@@ -50,13 +52,13 @@ export function BloodBankCard({
 
         {/* Button Section */}
         <div className="flex gap-2 pt-2">
-          <Button
+          <CustomButton
             onClick={onSave}
             className="flex-1 bg-sky hover:bg-sky-900 text-white font-semibold py-6 px-3 rounded-xl transition-colors text-sm"
           >
             Add to Cart
-          </Button>
-          <Button
+          </CustomButton>
+          <CustomButton
             onClick={handlelike}
             variant={'outline'}
             className={`py-6 w-12 border rounded-xl transition-colors ${
@@ -69,7 +71,7 @@ export function BloodBankCard({
               size={20}
               className={isLiked ? 'fill-red-500 text-red-500' : 'text-gray-400'}
             />
-          </Button>
+          </CustomButton>
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from '@
 import { Input } from '@/components/ui/input';
 import { Eye, EyeOff } from 'lucide-react';
 import { Button } from '../ui/button';
+import { CustomButton } from '../custom/CustomButton';
 
 export default function TransactionPINModal({ isOpen, onClose, totalAmount, onConfirm }) {
   const [pin, setPin] = useState('');
@@ -52,13 +53,14 @@ export default function TransactionPINModal({ isOpen, onClose, totalAmount, onCo
         </div>
 
         {/* Pay Button */}
-        <Button
+        <CustomButton
           onClick={handleConfirm}
+          size="lg"
           disabled={pin.length !== 6}
-          className="w-full px-4 py-6 bg-sky text-white font-medium rounded-lg hover:bg-sky-900 disabled:opacity-50 transition-colors"
+          className="w-full px-4 py-6 bg-sky text-white font-medium rounded-lg hover:bg-blue-900 disabled:opacity-50 transition-colors"
         >
           Pay ₦{totalAmount.toLocaleString()}
-        </Button>
+        </CustomButton>
       </DialogContent>
     </Dialog>
   );

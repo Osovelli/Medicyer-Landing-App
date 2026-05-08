@@ -66,10 +66,12 @@ export default function BlogPage() {
     const [activeCategory, setActiveCategory] = useState('All');
 
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen bg-[#FAFAFA]">
         <Header isLoggedIn={true} userName="Tobi Dev" />
-        {/* Breadcrumb */}
-            <div className="bg-white mx-auto px-4 py-4 border-b border-gray-200">
+        <div className="max-w-7xl mx-auto">
+
+            {/* Breadcrumb */}
+            <div className="px-4 py-4 border-b border-gray-200">
                 <div className="mx-auto px-4 py-4 text-left">
                     {/* breadcrumb text */}
                     <Breadcrumb className="text-xs text-gray-600">
@@ -110,64 +112,65 @@ export default function BlogPage() {
                 </div>
             </div>
 
-        {/* Main Content */}
-        <main className="min-h-screen bg-white">
-        {/* Hero Section */}
-        <div className="max-w-9xl mx-auto px-7 py-16 lg:py-20">
-            <h1 className="text-3xl text-left lg:text-4xl font-bold text-sky mb-12">Blog</h1>
+            {/* Main Content */}
+            <main className="min-h-screen">
+            {/* Hero Section */}
+            <div className="px-7 py-16 lg:py-20">
+                <h1 className="text-3xl text-left lg:text-4xl font-bold text-sky mb-12">Blog</h1>
 
-            {/* Category Filter */}
-            <div className="flex flex-wrap gap-3 mb-16">
-            {CATEGORIES.map((category) => (
-                <Badge
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`cursor-pointer px-4 py-2 rounded-full transition-colors ${
-                    activeCategory === category
-                    ? 'bg-sky text-white hover:bg-blue-950'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-                variant={activeCategory === category ? 'default' : 'outline'}
-                >
-                {category}
-                </Badge>
-            ))}
+                {/* Category Filter */}
+                <div className="flex flex-wrap gap-3 mb-16">
+                {CATEGORIES.map((category) => (
+                    <Badge
+                    key={category}
+                    onClick={() => setActiveCategory(category)}
+                    className={`cursor-pointer px-4 py-2 rounded-full transition-colors ${
+                        activeCategory === category
+                        ? 'bg-sky text-white hover:bg-blue-950'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                    variant={activeCategory === category ? 'default' : 'outline'}
+                    >
+                    {category}
+                    </Badge>
+                ))}
+                </div>
+
+                {/* Featured Blog */}
+                <div className="mb-20">
+                <FeaturedBlog {...FEATURED_BLOG} />
+                </div>
+
+                {/* Our Stories Section */}
+                <div className="flex items-center justify-between mb-12">
+                <h2 className="text-3xl font-bold text-sky">Our Stories</h2>
+                <div className="flex items-center gap-4 text-gray-600">
+                    <span className="text-sm font-medium bg-purple-50 text-sky px-3 py-1 rounded-full">
+                    123 listed
+                    </span>
+                    <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                    <Menu size={20} />
+                    </button>
+                </div>
+                </div>
+
+                {/* Blog Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {BLOG_POSTS.map((post) => (
+                    <BlogCard key={post.id} {...post} />
+                ))}
+                </div>
+            </div>
+            </main>
+            {/* FAQ Section */}
+            <div className="">
+                <FAQSection />
             </div>
 
-            {/* Featured Blog */}
-            <div className="mb-20">
-            <FeaturedBlog {...FEATURED_BLOG} />
+            {/* Blog Section */}
+            <div className="">
+                <BlogSection />
             </div>
-
-            {/* Our Stories Section */}
-            <div className="flex items-center justify-between mb-12">
-            <h2 className="text-3xl font-bold text-sky">Our Stories</h2>
-            <div className="flex items-center gap-4 text-gray-600">
-                <span className="text-sm font-medium bg-purple-50 text-sky px-3 py-1 rounded-full">
-                123 listed
-                </span>
-                <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-                <Menu size={20} />
-                </button>
-            </div>
-            </div>
-
-            {/* Blog Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {BLOG_POSTS.map((post) => (
-                <BlogCard key={post.id} {...post} />
-            ))}
-            </div>
-        </div>
-        </main>
-        {/* FAQ Section */}
-        <div className="">
-            <FAQSection />
-        </div>
-
-        {/* Blog Section */}
-        <div className="">
-            <BlogSection />
         </div>
         {/* Footer */}
         <Footer />

@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from '../custom/Modal';
 import { SuccessIcon } from '../custom/Icons';
 import { Button } from '../ui/button';
+import { CustomButton } from '../custom/CustomButton';
 
 const shareOptions = [
     { icon: '/Telegram.svg', route: 'https://t.me/your_channel' },
@@ -56,7 +57,7 @@ const ConversionSuccessModal = ({ isOpen, onOpenChange, conversionData }) => {
         </div>
 
         {/* Share Options */}
-        <div className="space-y-3">
+        {/* <div className="space-y-3">
             <p className="text-xs text-gray-600 font-medium">Share via</p>
             <div className="flex gap-4 justify-center">
             {shareOptions.map((option, idx) => (
@@ -71,17 +72,17 @@ const ConversionSuccessModal = ({ isOpen, onOpenChange, conversionData }) => {
                 </a>
             ))}
             </div>
-        </div>
+        </div> */}
         
         {/* Action Buttons */}
-        <div className="flex w-full">
-            <Button
+        <div className="flex w-full mt-2">
+            <CustomButton
             onClick={onOpenChange}
             className="flex-1 px-4 py-3 bg-sky text-white font-medium rounded-lg hover:bg-blue-950 transition-colors"
-            size={'xl'}
+            size={'lg'}
             >
                 Home
-            </Button>
+            </CustomButton>
         </div>
       </div>
     </Modal>

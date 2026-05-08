@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '../ui/button';
 import CustomInput from '../custom/CustomInput';
+import { CustomButton } from '../custom/CustomButton';
 
 export default function AuthorizationModal({ isOpen, onClose, onConfirm }) {
   const [password, setPassword] = useState('');
@@ -25,13 +26,13 @@ export default function AuthorizationModal({ isOpen, onClose, onConfirm }) {
           placeholder='********'
         />
         <div className="flex gap-3 pt-4">
-          <Button 
+          <CustomButton 
           onClick={handleSubmit} 
           className="flex-1 p-6 bg-sky hover:bg-blue-950 rounded-xl"
           size={'xl'}
           >
             Confirm
-          </Button>
+          </CustomButton>
         </div>
       </DialogContent>
     </Dialog>

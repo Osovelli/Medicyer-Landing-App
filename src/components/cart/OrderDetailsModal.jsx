@@ -1,6 +1,7 @@
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { SuccessIcon } from '../custom/Icons';
 import { Button } from '../ui/button';
+import { CustomButton } from '../custom/CustomButton';
 
 export default function OrderDetailsModal({ isOpen, onClose, orderData }) {
   return (
@@ -70,21 +71,21 @@ export default function OrderDetailsModal({ isOpen, onClose, orderData }) {
 
         {/* Action Buttons */}
         <div className="flex gap-3">
-          <Button
+          <CustomButton
             variant={'outline'}
             onClick={onClose}
-            className="flex-1 px-4 py-3 border border-sky text-sky font-medium rounded-lg hover:bg-gray-50 transition-colors"
-            size={'xl'}
+            className="px-10 py-3 border border-sky text-sky font-medium rounded-lg hover:bg-gray-50 transition-colors"
+            size={'lg'}
           >
             See Bookings
-          </Button>
-          <Button
+          </CustomButton>
+          <CustomButton
             onClick={onClose}
-            className="flex-1 px-4 py-3 bg-sky text-white font-medium rounded-lg hover:bg-gray-800 transition-colors"
-            size={'xl'}
+            className="flex-1 px-4 py-3 bg-sky text-white font-medium rounded-lg hover:bg-blue-900 transition-colors"
+            size={'lg'}
           >
             Home
-          </Button>
+          </CustomButton>
         </div>
       </DialogContent>
     </Dialog>

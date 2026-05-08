@@ -43,6 +43,7 @@ import { SaveModal } from "@/components/lab/SaveTestModal";
 import { ItemAddedModal } from "@/components/lab/ItemAddedModal";
 import { BloodBankCard } from "@/components/bloodbank/BloodBankCard";
 import { AddCartModal } from "@/components/bloodbank/AddCartModal";
+import { ChatNotification2Icon, MapIcon, MapLocationIcon, PhoneCallIcon } from "@/components/custom/Icons";
 
 //Sample data - replace with real data from API 
 /* const TESTS = [
@@ -102,10 +103,10 @@ const REVIEW_DATA = {
 };
 
 const ACTIONS = [
-  { id: "call", icon: Phone, label: "Call", color: "text-blue-600 dark:text-blue-400" },
-  { id: "chat", icon: MessageCircle, label: "Chat", color: "text-green-600 dark:text-green-400" },
-  { id: "direction", icon: Navigation, label: "Direction", color: "text-orange-500 dark:text-orange-400" },
-  { id: "share", icon: Share2, label: "Share", color: "text-violet-600 dark:text-violet-400" },
+  { id: "chat", icon: ChatNotification2Icon, label: "Chat", color: "text-green-600 dark:text-green-400" },
+  { id: "call", icon: PhoneCallIcon, label: "Call", color: "text-blue-600 dark:text-blue-400" },
+  { id: "direction", icon: MapLocationIcon, label: "Direction", color: "text-orange-500 dark:text-orange-400" },
+  { id: "share", icon: Share2, label: "Share", color: "dark:text-violet-400" },
 ];
 
 
@@ -153,11 +154,13 @@ export default function BloodBankDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+    <div className="min-h-screen bg-[#FAFAFA] dark:bg-slate-900">
+      <div className="max-w-7xl mx-auto">
+
         <Header isLoggedIn={true} userName="Tobi Dev" />
         {/* Breadcrumb */}
-        <div className="bg-white mx-auto px-4 py-4 border-b border-gray-200">
-            <div className="mx-auto px-4 py-4 text-left">
+        <div className=" px-4 py-4 border-b border-gray-200">
+            <div className="px-4 py-4 text-left">
                 {/* breadcrumb text */}
                 <Breadcrumb className="text-xs text-gray-600">
                     <BreadcrumbList className={"gap-1"}>
@@ -196,165 +199,166 @@ export default function BloodBankDetailPage() {
                 </Breadcrumb>
             </div>
         </div>
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6">
-        <button
-          onClick={() => navigate(-1)}
-          className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-slate-100"
-        >
-          <ArrowLeftIcon className="h-6 w-8 text-slate-600" />
-        </button>
-        {/*Two-column grid*/}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-6 xl:gap-8">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6">
+          <button
+            onClick={() => navigate(-1)}
+            className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-slate-100"
+          >
+            <ArrowLeftIcon className="h-6 w-8 text-slate-600" />
+          </button>
+          {/*Two-column grid*/}
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-6 xl:gap-8">
 
-          {/*LEFT COLUMN*/}
-          <div className="min-w-0">
+            {/*LEFT COLUMN*/}
+            <div className="min-w-0">
 
-            {/* Test cards grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-              {filteredBloodBank.map((bank) => (
-                <BloodBankCard   
-                  key={bank.id}
-                  title={bank.bloodtype}
-                  description={bank.description}
-                  price={bank.price}
-                  points={bank.points}
-                  serviceType={bank.serviceType}
-                  onBook={() => handleBook({
-                    title: "Liver Function Tests (LFT)",
-                    category: "Routine Tests",
-                    price: 15000,
-                    points: 12,
-                    homeServiceFee: 4000,
-                  }
-                  )}
-                  onSave={() => handleOpenAddCart()}
-                />
-              ))}
+              {/* Test cards grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                {filteredBloodBank.map((bank) => (
+                  <BloodBankCard   
+                    key={bank.id}
+                    title={bank.bloodtype}
+                    description={bank.description}
+                    price={bank.price}
+                    points={bank.points}
+                    serviceType={bank.serviceType}
+                    onBook={() => handleBook({
+                      title: "Liver Function Tests (LFT)",
+                      category: "Routine Tests",
+                      price: 15000,
+                      points: 12,
+                      homeServiceFee: 4000,
+                    }
+                    )}
+                    onSave={() => handleOpenAddCart()}
+                  />
+                ))}
+              </div>
+
+              {filteredBloodBank.length === 0 && (
+                <div className="text-center py-16 text-slate-400 dark:text-slate-500 text-sm">
+                  No blood banks available in this category.
+                </div>
+              )}
             </div>
 
-            {filteredBloodBank.length === 0 && (
-              <div className="text-center py-16 text-slate-400 dark:text-slate-500 text-sm">
-                No blood banks available in this category.
-              </div>
-            )}
-          </div>
+            {/* ═══ RIGHT COLUMN (Sidebar) ═══ */}
+            <aside className="space-y-5 -order-1 lg:order-1 lg:sticky lg:top-6 lg:self-start">
 
-          {/* ═══ RIGHT COLUMN (Sidebar) ═══ */}
-          <aside className="space-y-5 -order-1 lg:order-1 lg:sticky lg:top-6 lg:self-start">
+              {/* About */}
+              <Card className="border-slate-100 dark:border-slate-700 shadow-none">
+                <CardHeader className="pb-2 px-5 pt-5">
+                  <CardTitle className="text-base font-bold text-slate-900 dark:text-slate-100">
+                    About
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="px-5 pb-5">
+                  <p
+                    className={cn(
+                      "text-sm text-slate-500 dark:text-slate-400 leading-relaxed",
+                      !aboutExpanded && "line-clamp-4"
+                    )}
+                  >
+                    Consectetur dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                    irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu fugiat nulla pariatur.
+                  </p>
+                  <button
+                    onClick={() => setAboutExpanded(!aboutExpanded)}
+                    className="text-xs font-semibold text-blue-600 dark:text-blue-400 mt-2 hover:underline"
+                  >
+                    {aboutExpanded ? "See less" : "See more"}
+                  </button>
+                </CardContent>
+              </Card>
 
-            {/* About */}
-            <Card className="border-slate-100 dark:border-slate-700 shadow-none">
-              <CardHeader className="pb-2 px-5 pt-5">
-                <CardTitle className="text-base font-bold text-slate-900 dark:text-slate-100">
-                  About
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="px-5 pb-5">
-                <p
-                  className={cn(
-                    "text-sm text-slate-500 dark:text-slate-400 leading-relaxed",
-                    !aboutExpanded && "line-clamp-4"
-                  )}
-                >
-                  Consectetur dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur.
-                </p>
-                <button
-                  onClick={() => setAboutExpanded(!aboutExpanded)}
-                  className="text-xs font-semibold text-blue-600 dark:text-blue-400 mt-2 hover:underline"
-                >
-                  {aboutExpanded ? "See less" : "See more"}
-                </button>
-              </CardContent>
-            </Card>
-
-            {/* Action buttons */}
-            <Card className="border-slate-100 dark:border-slate-700 shadow-none">
-              <CardContent className="px-5 py-5">
-                <div className="flex items-center justify-around">
-                  {ACTIONS.map(({ id, icon: Icon, label, color }) => (
-                    <button
-                      key={id}
-                      onClick={() => handleAction(id)}
-                      className="flex flex-col items-center gap-1.5 group"
-                    >
-                      <div
-                        className={cn(
-                          "w-11 h-11 rounded-full flex items-center justify-center",
-                          "bg-slate-100 dark:bg-slate-700",
-                          "group-hover:bg-slate-200 dark:group-hover:bg-slate-600",
-                          "transition-colors duration-200"
-                        )}
+              {/* Action buttons */}
+              <Card className="border-slate-100 dark:border-slate-700 shadow-none">
+                <CardContent className="px-5 py-5">
+                  <div className="flex items-center justify-around">
+                    {ACTIONS.map(({ id, icon: Icon, label, color }) => (
+                      <button
+                        key={id}
+                        onClick={() => handleAction(id)}
+                        className="flex flex-col items-center gap-1.5 group"
                       >
-                        <Icon className={cn("w-5 h-5", color)} />
-                      </div>
-                      <span className="text-[11px] font-medium text-slate-600 dark:text-slate-400">
-                        {label}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                        <div
+                          className={cn(
+                            "w-11 h-11 rounded-full flex items-center justify-center",
+                            "bg-[#92BDF64D] dark:bg-slate-700",
+                            "group-hover:bg-slate-200 dark:group-hover:bg-slate-600",
+                            "transition-colors duration-200"
+                          )}
+                        >
+                          <Icon className={cn("w-5 h-5", color)} />
+                        </div>
+                        <span className="text-[11px] font-medium text-slate-600 dark:text-slate-400">
+                          {label}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
 
-            {/* Schedule */}
-            {/* <ScheduleCard schedule={SCHEDULE} /> */}
-            <ScheduleSelector
-              timeSlots={timeSlots}
-              bookedSlots={bookedSlots}
-              totalSlots={12}
-              selectedDay={selectedDay}
-              selectedTime={selectedTime}
-              onDayChange={setSelectedDay}
-              onTimeChange={setSelectedTime}
-            />
+              {/* Schedule */}
+              {/* <ScheduleCard schedule={SCHEDULE} /> */}
+              <ScheduleSelector
+                timeSlots={timeSlots}
+                bookedSlots={bookedSlots}
+                totalSlots={12}
+                selectedDay={selectedDay}
+                selectedTime={selectedTime}
+                onDayChange={setSelectedDay}
+                onTimeChange={setSelectedTime}
+              />
 
-            {/* Reviews */}
-            <ReviewSection
-              averageRating={REVIEW_DATA.averageRating}
-              totalReviews={REVIEW_DATA.totalReviews}
-              distribution={REVIEW_DATA.distribution}
-              onSeeReview={() => navigate("/blood-bank/reviews/all")}
-            />
-          </aside>
+              {/* Reviews */}
+              <ReviewSection
+                averageRating={REVIEW_DATA.averageRating}
+                totalReviews={REVIEW_DATA.totalReviews}
+                distribution={REVIEW_DATA.distribution}
+                onSeeReview={() => navigate("/blood-bank/reviews/all")}
+              />
+            </aside>
+          </div>
+          <BookingModal
+              open={bookingOpen}
+              onOpenChange={setBookingOpen}
+              test={selectedTest}
+              lab={{
+                  name: "Jasiri Med Laboratory",
+                  address: "No 26, 62 Road, off 6th Ave. Gwarimpa – Abuja, NG",
+                  rating: "3.5",
+                  reviewCount: "503",
+              }}
+              onComplete={(dest) => {
+                  // dest = "bookings" | "home"
+                  // navigate accordingly
+              }}
+          />
+
+          {/* Item Added Modal */}
+          <AddCartModal
+              open={addCartModalOpen}
+              onOpenChange={setAddCartModalOpen}
+              onSeeCart={handleSeeCart}
+          />
+              
+              {/* Save Modal */}
+              <SaveModal
+                open={saveModalOpen}
+                onOpenChange={setSaveModalOpen}
+                savedTests={savedTests}
+              />
         </div>
-        <BookingModal
-            open={bookingOpen}
-            onOpenChange={setBookingOpen}
-            test={selectedTest}
-            lab={{
-                name: "Jasiri Med Laboratory",
-                address: "No 26, 62 Road, off 6th Ave. Gwarimpa – Abuja, NG",
-                rating: "3.5",
-                reviewCount: "503",
-            }}
-            onComplete={(dest) => {
-                // dest = "bookings" | "home"
-                // navigate accordingly
-            }}
-        />
-
-        {/* Item Added Modal */}
-        <AddCartModal
-            open={addCartModalOpen}
-            onOpenChange={setAddCartModalOpen}
-            onSeeCart={handleSeeCart}
-        />
-            
-            {/* Save Modal */}
-            <SaveModal
-              open={saveModalOpen}
-              onOpenChange={setSaveModalOpen}
-              savedTests={savedTests}
-            />
-      </div>
-      {/* Blog Section */}
-      <div className="">
-        <BlogSection />
+        {/* Blog Section */}
+        <div className="">
+          <BlogSection />
+        </div>
       </div>
       {/* Footer */}
       <Footer />

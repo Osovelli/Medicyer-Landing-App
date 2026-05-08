@@ -3,6 +3,7 @@ import Modal from "../custom/Modal";
 import { Eye, EyeOff } from "lucide-react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
+import { CustomButton } from "../custom/CustomButton";
 
 const PinModal = ({ isOpen, onOpenChange, onSubmit }) => {
   const [pin, setPin] = useState('');
@@ -40,13 +41,14 @@ const PinModal = ({ isOpen, onOpenChange, onSubmit }) => {
               {showPin ? <EyeOff size={18} /> : <Eye size={18} />}
             </button>
           </div>
-        <Button 
-        onClick={handleSubmit} 
-        className="w-full px-4 py-6 bg-sky text-white font-medium rounded-lg hover:bg-sky-900 disabled:opacity-50 transition-colors"
+        <CustomButton 
+        onClick={handleSubmit}
+        size={'lg'}
+        className="w-full font-medium rounded-lg hover:bg-blue-950 disabled:opacity-50 transition-colors"
         disabled={pin.length <= 3}
         >
           Pay ₦ {formatCurrency(23400)}
-        </Button>
+        </CustomButton>
       </div>
     </Modal>
   );

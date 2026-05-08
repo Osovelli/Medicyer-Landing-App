@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from '@/components/ui/dialog';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
+import { CustomButton } from '../custom/CustomButton';
 
 export default function CheckoutModal({ isOpen, onClose, totalAmount, onProceed }) {
   const [activeTab, setActiveTab] = useState('wallet');
@@ -109,16 +110,19 @@ export default function CheckoutModal({ isOpen, onClose, totalAmount, onProceed 
 
         {/* Action Buttons */}
         <div className="flex gap-3">
-          <button
+          <CustomButton
             onClick={onClose}
-            className="flex-1 px-4 py-3 border border-gray-900 text-gray-900 font-medium rounded-lg hover:bg-gray-50 transition-colors"
+            variant="outline"
+            size="lg"
+            className="px-4 py-3 border border-gray-900 text-gray-900 font-medium rounded-lg hover:bg-gray-50 transition-colors"
           >
             No, Cancel
-          </button>
+          </CustomButton>
           <button
             onClick={handleProceed}
+            size="lg"
             disabled={!agreed}
-            className="flex-1 px-4 py-3 bg-sky text-white font-medium rounded-lg hover:bg-gray-800 disabled:opacity-50 transition-colors"
+            className="flex-1 px-4 py-3 bg-sky text-white font-medium rounded-lg hover:bg-blue-900 disabled:opacity-50 transition-colors"
           >
             Yes, Proceed
           </button>

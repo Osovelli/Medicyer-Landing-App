@@ -3,6 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Button } from '../ui/button';
 import CustomInput from '../custom/CustomInput';
 import { Search } from 'lucide-react';
+import { CustomButton } from '../custom/CustomButton';
 
 export default function AddressInputModal({ isOpen, onClose, onSubmit, currentAddress }) {
   const [address, setAddress] = useState(currentAddress || '');
@@ -62,22 +63,22 @@ export default function AddressInputModal({ isOpen, onClose, onSubmit, currentAd
         </div>
 
         <div className="flex gap-3 pt-4">
-          <Button
+          <CustomButton
             onClick={onClose}
             variant="outline"
-            className="flex-1 px-2 py-3 border-2 border-gray-300 text-gray-900 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
-            size={'xl'}
+            className="px-6 py-2 text-gray-900 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
+            size={'lg'}
           >
             No, Cancel
-          </Button>
-          <Button
+          </CustomButton>
+          <CustomButton
             onClick={handleSubmit}
             disabled={!address.trim()}
-            className="flex-1 px-4 py-3 bg-sky text-white font-semibold rounded-lg hover:bg-blue-950 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            size={'xl'}
+            className="flex-1 px-4 py-2 bg-sky text-white font-semibold rounded-lg hover:bg-blue-900 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            size={'lg'}
           >
             Submit
-          </Button>
+          </CustomButton>
         </div>
       </DialogContent>
     </Dialog>

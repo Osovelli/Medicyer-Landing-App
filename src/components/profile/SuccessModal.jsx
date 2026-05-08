@@ -1,6 +1,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '../ui/button';
 import { SuccessIcon } from '../custom/Icons';
+import { CustomButton } from '../custom/CustomButton';
 
 export default function SuccessModal({ isOpen, onClose }) {
   return (
@@ -20,13 +21,13 @@ export default function SuccessModal({ isOpen, onClose }) {
                 <p className='text-center text-sky text-sm font-normal'>Lorem ipsum dolor sit amet consectetur. In vel diam in rutrum pulvinar at nisi at. Ut arcu ut venenatis q</p>
                   
                 <div className="flex w-full gap-3 pt-4">
-                <Button 
+                <CustomButton
                 onClick={onClose} 
                 className="flex-1 bg-sky p-5 rounded-xl hover:bg-blue-950"
                 size={'xl'}
                 >
                     Home
-                </Button>
+                </CustomButton>
                 </div>
             </div>
       </DialogContent>

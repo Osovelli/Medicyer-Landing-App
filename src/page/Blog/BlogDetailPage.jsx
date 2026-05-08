@@ -29,82 +29,84 @@ export default function BlogDetailPage() {
   }
 
   return (
-    <div className="min-h-screen dark:bg-slate-900">
+    <div className="min-h-screen bg-[#FAFAFA] dark:bg-slate-900">
         <Header isLoggedIn={true} userName="Tobi Dev" />
-        {/* Breadcrumb */}
-        <div className="bg-white mx-auto px-4 py-4 border-b border-gray-200">
-            <div className="mx-auto px-4 py-4 text-left">
-                {/* breadcrumb text */}
-                <Breadcrumb className="text-xs text-gray-600">
-                    <BreadcrumbList className={"gap-1"}>
-                        <BreadcrumbItem>
-                            <BreadcrumbLink href="/">Home</BreadcrumbLink>
-                        </BreadcrumbItem>
-                        <BreadcrumbSeparator />
-                        <BreadcrumbItem>
-                            <DropdownMenu>
-                                <DropdownMenuTrigger className="flex items-center gap-1">
-                                    <BreadcrumbEllipsis className="size-4" />
-                                    <span className="sr-only">Toggle menu</span>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent align="start">
-                                    <DropdownMenuItem>Pharmacy</DropdownMenuItem>
-                                    <DropdownMenuItem onClick={() => navigate('/blood-bank')}>
-                                        Blood Bank
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem>Donor</DropdownMenuItem>
-                                </DropdownMenuContent>
-                            </DropdownMenu>
-                        </BreadcrumbItem>
-                        <BreadcrumbSeparator />
-                        <BreadcrumbItem>
-                            <BreadcrumbLink href="/hospitals">Blood Bank</BreadcrumbLink>
-                        </BreadcrumbItem>
-                        <BreadcrumbSeparator />
-                        <BreadcrumbItem>
-                            <BreadcrumbLink href="/hospital/reviews/all">Reviews</BreadcrumbLink>
-                        </BreadcrumbItem>
-                        {/* <BreadcrumbSeparator />
-                        <BreadcrumbItem>
-                            <BreadcrumbLink href="/doctors/cardiologist">Cardiologist</BreadcrumbLink>
-                        </BreadcrumbItem> */}
-                    </BreadcrumbList>
-                </Breadcrumb>
-            </div>
-        </div>
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6">
-            {/* back arrow for navigation */}
-            <div className="ml-5">
-                <LucideArrowLeft className="w-4 h-4" onClick={handleback} />
-            </div>
-            <div className="p-20">
-                {/* Article Title */}
-                <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight">
-                PerfInsights: Detecting Performance Optimization Opportunities in Go Code using Generative
-                </h1>
-
-                {/* Featured Image */}
-                <div className="rounded-2xl overflow-hidden mb-12 p-2">
-                <img
-                    src="/blog feature image.svg"
-                    alt="Article"
-                    className="w-full h-96 rounded-3xl object-cover object-bottom-left"
-                />
-                </div>
-
-                {/* Article Content */}
-                <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
-                {ARTICLE_CONTENT.split('\n\n').map((paragraph, index) => (
-                    <p key={index} className="text-base lg:text-lg">
-                    {paragraph}
-                    </p>
-                ))}
+        <div className="max-w-7xl mx-auto">
+            {/* Breadcrumb */}
+            <div className="px-4 py-4  border-gray-200">
+                <div className="px-4 py-4 text-left">
+                    {/* breadcrumb text */}
+                    <Breadcrumb className="text-xs text-gray-600">
+                        <BreadcrumbList className={"gap-1"}>
+                            <BreadcrumbItem>
+                                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                            </BreadcrumbItem>
+                            <BreadcrumbSeparator />
+                            <BreadcrumbItem>
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger className="flex items-center gap-1">
+                                        <BreadcrumbEllipsis className="size-4" />
+                                        <span className="sr-only">Toggle menu</span>
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent align="start">
+                                        <DropdownMenuItem>Pharmacy</DropdownMenuItem>
+                                        <DropdownMenuItem onClick={() => navigate('/blood-bank')}>
+                                            Blood Bank
+                                        </DropdownMenuItem>
+                                        <DropdownMenuItem>Donor</DropdownMenuItem>
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
+                            </BreadcrumbItem>
+                            <BreadcrumbSeparator />
+                            <BreadcrumbItem>
+                                <BreadcrumbLink href="/hospitals">Blood Bank</BreadcrumbLink>
+                            </BreadcrumbItem>
+                            <BreadcrumbSeparator />
+                            <BreadcrumbItem>
+                                <BreadcrumbLink href="/hospital/reviews/all">Reviews</BreadcrumbLink>
+                            </BreadcrumbItem>
+                            {/* <BreadcrumbSeparator />
+                            <BreadcrumbItem>
+                                <BreadcrumbLink href="/doctors/cardiologist">Cardiologist</BreadcrumbLink>
+                            </BreadcrumbItem> */}
+                        </BreadcrumbList>
+                    </Breadcrumb>
                 </div>
             </div>
-        </div>
-        {/* Blog Section */}
-        <div className="">
-            <BlogSection />
+            <div className="px-4 sm:px-6 lg:px-8 py-4 md:py-6">
+                {/* back arrow for navigation */}
+                <div className="ml-5">
+                    <LucideArrowLeft className="w-4 h-4" onClick={handleback} />
+                </div>
+                <div className="lg:p-20">
+                    {/* Article Title */}
+                    <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight">
+                    PerfInsights: Detecting Performance Optimization Opportunities in Go Code using Generative
+                    </h1>
+
+                    {/* Featured Image */}
+                    <div className="rounded-2xl overflow-hidden mb-12 p-2">
+                    <img
+                        src="/blog feature image.svg"
+                        alt="Article"
+                        className="w-full h-96 rounded-3xl object-cover object-bottom-left"
+                    />
+                    </div>
+
+                    {/* Article Content */}
+                    <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
+                    {ARTICLE_CONTENT.split('\n\n').map((paragraph, index) => (
+                        <p key={index} className="text-base lg:text-lg">
+                        {paragraph}
+                        </p>
+                    ))}
+                    </div>
+                </div>
+            </div>
+            {/* Blog Section */}
+            <div className="">
+                <BlogSection />
+            </div>
         </div>
         {/* Footer */}
         <Footer />

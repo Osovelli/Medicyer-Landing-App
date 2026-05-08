@@ -52,10 +52,11 @@ export default function ReferralPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#FAFAFA] ">
       <Header isLoggedIn={true} userName="Tobi Dev" />
+      <div className="max-w-7xl mx-auto">
         {/* Breadcrumb */}
-        <div className="bg-white mx-auto px-4 py-4 border-b border-gray-200">
+        <div className="px-4 py-4 border-b border-gray-200">
             <div className="mx-auto px-4 py-4 text-left">
                 {/* breadcrumb text */}
                 <Breadcrumb className="text-xs text-gray-600">
@@ -76,103 +77,104 @@ export default function ReferralPage() {
             </div>
         </div>
         
-      <main className="max-w-8xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Left Sidebar */}
-          <div className="lg:col-span-1 space-y-2">
-            {/* Refer & Earn Card */}
-            <div className="bg-white border border-gray-200 rounded-2xl p-8 text-center space-y-4">
-              {/* Icon */}
-              <div className="flex justify-center mb-4">
-                <div className="w-28 h-28 rounded-full">
-                  <img src='/bell icon.svg' alt='bell icon' className='w-full h-full' />
+        <main className="px-6 py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* Left Sidebar */}
+            <div className="lg:col-span-1 space-y-2">
+              {/* Refer & Earn Card */}
+              <div className="bg-white border border-gray-200 rounded-2xl p-8 text-center space-y-4">
+                {/* Icon */}
+                <div className="flex justify-center mb-4">
+                  <div className="w-28 h-28 rounded-full">
+                    <img src='/bell icon.svg' alt='bell icon' className='w-full h-full' />
+                  </div>
                 </div>
-              </div>
 
-              {/* Heading */}
-              <h2 className="text-2xl font-bold text-gray-900">Refer & Earn</h2>
+                {/* Heading */}
+                <h2 className="text-2xl font-bold text-gray-900">Refer & Earn</h2>
 
-              {/* Description */}
-              <p className="text-gray-600 text-sm leading-relaxed">
-                invite your friends with your referral code, and earn up to 500 points.
-              </p>
+                {/* Description */}
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  invite your friends with your referral code, and earn up to 500 points.
+                </p>
 
-              {/* Terms Link */}
-              <a href="/terms" className="text-blue-600 font-semibold text-sm hover:underline">
-                Terms & Conditions
-              </a>
+                {/* Terms Link */}
+                <a href="/terms" className="text-blue-600 font-semibold text-sm hover:underline">
+                  Terms & Conditions
+                </a>
 
-              {/* Divider */}
-              <div className="h-px bg-gray-200 my-6"></div>
+                {/* Divider */}
+                <div className="h-px bg-gray-200 my-6"></div>
 
-              {/* Balance Section */}
-              <div className="flex justify-between items-center">
-                <div className="text-center">
-                  <p className="text-gray-600 text-sm mb-2">Balance</p>
-                  <p className="text-3xl font-bold text-gray-900">2,300</p>
+                {/* Balance Section */}
+                <div className="flex justify-between items-center">
+                  <div className="text-center">
+                    <p className="text-gray-600 text-sm mb-2">Balance</p>
+                    <p className="text-3xl font-bold text-gray-900">2,300</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-base">34</p>
+                    <p className="text-base">Referrals</p>
+                  </div>
                 </div>
-                <div className="text-center">
-                  <p className="text-base">34</p>
-                  <p className="text-base">Referrals</p>
-                </div>
-              </div>
 
-              {/* CTA Banner */}
-              <div className="mt-8 bg-yellow-300 rounded-xl space-y-3">
-                {/* <h3 className="font-bold text-gray-900 text-lg">Refer & Earn</h3>
-                <p className="text-gray-800 text-sm font-medium">Invite your friends & earn up to 500 points</p>
-                <Button
-                  onClick={handleReferNow}
-                  className="w-full bg-purple-400 hover:bg-purple-500 text-white font-semibold rounded-full py-2"
-                >
-                  REFER NOW
-                </Button> */}
-                <img src='/banner image.svg' alt='banner' className='w-full h-full' />
+                {/* CTA Banner */}
+                <div className="mt-8 bg-yellow-300 rounded-xl space-y-3">
+                  {/* <h3 className="font-bold text-gray-900 text-lg">Refer & Earn</h3>
+                  <p className="text-gray-800 text-sm font-medium">Invite your friends & earn up to 500 points</p>
+                  <Button
+                    onClick={handleReferNow}
+                    className="w-full bg-purple-400 hover:bg-purple-500 text-white font-semibold rounded-full py-2"
+                  >
+                    REFER NOW
+                  </Button> */}
+                  <img src='/banner image.svg' alt='banner' className='w-full h-full' />
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Right Content - Recent Earnings Table */}
-          <div className="lg:col-span-2 bg-white shadow-md p-6 rounded-2xl">
-            <h3 className="text-lg text-left font-normal text-gray-900 mb-8">Recent Earnings</h3>
-            
-            <div className="overflow-x-auto">
-              <table className="w-full shadow-2xl">
-                <thead>
-                  <tr className="border-b border-gray-200">
-                    {columns.map((col) => (
-                      <th
-                        key={col.key}
-                        className="text-left text-xs py-4 px-4 font-normal text-gray-600 text-sm uppercase tracking-wide"
-                      >
-                        {col.label}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {SAMPLE_EARNINGS.map((earning) => (
-                    <tr key={earning.id} className="text-left border-b border-gray-100 hover:bg-gray-50 transition-colors">
+            {/* Right Content - Recent Earnings Table */}
+            <div className="lg:col-span-2 bg-white shadow-md p-6 rounded-2xl">
+              <h3 className="text-lg text-left font-normal text-gray-900 mb-8">Recent Earnings</h3>
+              
+              <div className="overflow-x-auto">
+                <table className="w-full shadow-2xl">
+                  <thead>
+                    <tr className="border-b border-gray-200">
                       {columns.map((col) => (
-                        <td key={`${earning.id}-${col.key}`} className="py-4 px-4 text-sm font-normal text-sky">
-                          {col.render(earning[col.key])}
-                        </td>
+                        <th
+                          key={col.key}
+                          className="text-left text-xs py-4 px-4 font-normal text-gray-600 text-sm uppercase tracking-wide"
+                        >
+                          {col.label}
+                        </th>
                       ))}
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {SAMPLE_EARNINGS.map((earning) => (
+                      <tr key={earning.id} className="text-left border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                        {columns.map((col) => (
+                          <td key={`${earning.id}-${col.key}`} className="py-4 px-4 text-sm font-normal text-sky">
+                            {col.render(earning[col.key])}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
-        </div>
-      </main>
+        </main>
 
         {/* Blog Section */}
         <div className="">
             <BlogSection />
         </div>
-        {/* Footer */}
-        <Footer />
+      </div>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

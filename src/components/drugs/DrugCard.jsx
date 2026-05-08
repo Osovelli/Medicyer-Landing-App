@@ -2,12 +2,13 @@ import { Button } from "@/components/ui/button"
 import { Heart } from "lucide-react"
 import { Link } from "react-router-dom"
 import { Heart2Icon } from "../custom/Icons"
+import { CustomButton } from "../custom/CustomButton"
 
-export function DrugCard({ id, name, description, imageUrl, onAddToCart, onWishlist }) {
+export function DrugCard({ id, name, description, imageUrl, onAddToCart, onWishlist, className }) {
   return (
     <Link
     to={`/pharmacy/drugs/${id}`}
-    className="flex flex-col gap-4 cursor-pointer bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow"
+    className={`flex flex-col gap-4 cursor-pointer bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow ${className}`}
     >
       {/* Drug Image */}
       <div className="w-full bg-linear-to-br from-blue-100 to-blue-50">

@@ -33,7 +33,7 @@ const DonorFilterSidebar = ({
                 <Checkbox
                   checked={selectedBloodType.includes(type)}
                   onCheckedChange={() => onBloodTypeChange(type)}
-                  className="rounded-sm"
+                  className="rounded-sm data-[state=checked]:bg-[#92BDF6] data-[state=checked]:border-[#92BDF6]"
                 />
                 <span className="text-sm text-gray-700">{type}</span>
               </label>
@@ -54,7 +54,7 @@ const DonorFilterSidebar = ({
                 <Checkbox
                   checked={selectedStatus.includes(status)}
                   onCheckedChange={() => onStatusChange(status)}
-                  className="rounded-sm"
+                  className="rounded-sm data-[state=checked]:bg-[#92BDF6] data-[state=checked]:border-[#92BDF6]"
                 />
                 <span className="text-sm text-gray-700">{status}</span>
               </label>
@@ -73,7 +73,7 @@ const DonorFilterSidebar = ({
           onValueChange={handlePriceChange}
           max={50000}
           step={1000}
-          className="mb-4"
+          className="mb-4 [&_.Range]:bg-amber-300"
         />
         <div className="flex justify-between text-xs text-gray-600">
           <span>NGN 0</span>

@@ -11,7 +11,7 @@ export default function FeaturedBlog({
 }) {
   return (
     <Link to={`/blog/${id}`}>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-shadow cursor-pointer">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white rounded-2xl p-6 hover:shadow-lg transition-shadow cursor-pointer">
         {/* Image */}
         <div className="rounded-2xl overflow-hidden h-64 lg:h-auto">
           <img

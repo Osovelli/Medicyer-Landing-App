@@ -104,7 +104,7 @@ export function BloodbanksGrid({
       <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredBloodBank.map((bank) => (
           <CuratedCard
-              className={"md:w-[350px] w-full"}
+              className={"md:max-w-[300px] w-full"}
               key={bank.id}
               logo={bank.logo}
               bgColor={bank.bgColor}

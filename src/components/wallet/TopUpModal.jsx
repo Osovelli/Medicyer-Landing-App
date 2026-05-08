@@ -8,6 +8,7 @@ import {
   Check,
 } from 'lucide-react';
 import Modal from '../custom/Modal';
+import { CustomButton } from '../custom/CustomButton';
 
 const TopUpModal = ({ isOpen, onOpenChange, onProceedToPin }) => {
   const [activeTab, setActiveTab] = useState('transfer');
@@ -229,23 +230,26 @@ const TopUpModal = ({ isOpen, onOpenChange, onProceedToPin }) => {
 
         {/* Action Buttons */}
         <div className="flex space-x-4">
-          <button
+          <CustomButton
             onClick={onOpenChange}
-            className="flex-1 h-12 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition-colors"
+            variant="outline"
+            size={'lg'}
+            className="px-8 border rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition-colors"
           >
             No, Cancel
-          </button>
-          <button
+          </CustomButton>
+          <CustomButton
             onClick={handleProceed}
+            size={'lg'}
             disabled={activeTab === 'card' && !agreedToTerms}
-            className={`flex-1 h-12 rounded-lg text-white font-medium transition-colors ${
+            className={`flex-1 rounded-lg text-white font-medium transition-colors ${
               activeTab === 'card' && !agreedToTerms
                 ? 'bg-gray-300 cursor-not-allowed'
                 : 'bg-[#272E6A] hover:bg-[#1a1f4a]'
             }`}
           >
             Yes, Proceed
-          </button>
+          </CustomButton>
         </div>
       </div>
     </Modal>

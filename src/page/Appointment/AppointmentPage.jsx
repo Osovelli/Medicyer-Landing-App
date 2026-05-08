@@ -194,226 +194,229 @@ export default function AppointmentPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
-            <Header isLoggedIn={true} userName="Tobi Dev" />
-            {/* Breadcrumb */}
-            <div className="bg-white mx-auto px-4 py-4 border-b border-gray-200">
-            <div className="mx-auto px-4 py-4 text-left">
-                {/* breadcrumb text */}
-                <Breadcrumb className="text-xs text-gray-600">
-                    <BreadcrumbList className={"gap-1"}>
-                        <BreadcrumbItem>
-                            <BreadcrumbLink href="/">Home</BreadcrumbLink>
-                        </BreadcrumbItem>
-                        <BreadcrumbSeparator />
-                        <BreadcrumbItem>
-                            <DropdownMenu>
-                                <DropdownMenuTrigger className="flex items-center gap-1">
-                                    <BreadcrumbEllipsis className="size-4" />
-                                    <span className="sr-only">Toggle menu</span>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent align="start">
-                                    <DropdownMenuItem>Pharmacy</DropdownMenuItem>
-                                    <DropdownMenuItem onClick={() => navigate('/blood-bank')}>
-                                        Blood Bank
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem>Donor</DropdownMenuItem>
-                                </DropdownMenuContent>
-                            </DropdownMenu>
-                        </BreadcrumbItem>
-                        <BreadcrumbSeparator />
-                        <BreadcrumbItem>
-                            <BreadcrumbLink href="/appointment">Appointments</BreadcrumbLink>
-                        </BreadcrumbItem>
-                        {/* <BreadcrumbItem>
-                        <BreadcrumbSeparator />
-                            <BreadcrumbLink href="/doctors/cardiologist">Cardiologist</BreadcrumbLink>
-                        </BreadcrumbItem> */}
-                    </BreadcrumbList>
-                </Breadcrumb>
-            </div>
+    <div className="min-h-screen bg-[#FAFAFA] dark:bg-slate-900">
+      <Header isLoggedIn={true} userName="Tobi Dev" />
+      <div className="max-w-7xl mx-auto w-full">
+        {/* Breadcrumb */}
+        <div className="px-4 py-4 border-b border-gray-200">
+          <div className="px-4 py-4 text-left">
+              {/* breadcrumb text */}
+              <Breadcrumb className="text-xs text-gray-600">
+                  <BreadcrumbList className={"gap-1"}>
+                      <BreadcrumbItem>
+                          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                      </BreadcrumbItem>
+                      <BreadcrumbSeparator />
+                      <BreadcrumbItem>
+                          <DropdownMenu>
+                              <DropdownMenuTrigger className="flex items-center gap-1">
+                                  <BreadcrumbEllipsis className="size-4" />
+                                  <span className="sr-only">Toggle menu</span>
+                              </DropdownMenuTrigger>
+                              <DropdownMenuContent align="start">
+                                  <DropdownMenuItem>Pharmacy</DropdownMenuItem>
+                                  <DropdownMenuItem onClick={() => navigate('/blood-bank')}>
+                                      Blood Bank
+                                  </DropdownMenuItem>
+                                  <DropdownMenuItem>Donor</DropdownMenuItem>
+                              </DropdownMenuContent>
+                          </DropdownMenu>
+                      </BreadcrumbItem>
+                      <BreadcrumbSeparator />
+                      <BreadcrumbItem>
+                          <BreadcrumbLink href="/appointment">Appointments</BreadcrumbLink>
+                      </BreadcrumbItem>
+                      {/* <BreadcrumbItem>
+                      <BreadcrumbSeparator />
+                          <BreadcrumbLink href="/doctors/cardiologist">Cardiologist</BreadcrumbLink>
+                      </BreadcrumbItem> */}
+                  </BreadcrumbList>
+              </Breadcrumb>
+          </div>
         </div>
 
-
-          {/* Main Content */}
-          <div className="max-w-9xl mx-auto px-4 py-6">
-            <button
-            onClick={() => navigate(-1)}
-            className="flex h-10 w-10 items-center shadow-sm justify-center rounded-full hover:bg-white transition-colors"
-            >
-            <ArrowLeftIcon className="h-4 w-4 text-slate-900" />
-            </button>
-          </div>
-          <div className=" bg-gray-50 p-6">
-            <div className="max-w-9xl mx-auto">
-                {/* Header */}
-                <div className="flex justify-between items-center mb-6">
-                <h1 className="text-2xl font-bold text-gray-900">Appointments</h1>
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                    <Button variant="outline" className="gap-2">
-                        <Calendar className="h-4 w-4" />
-                        Sort by Date
-                        <ChevronDown className="h-4 w-4" />
-                    </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                    <DropdownMenuItem>Sort by Date</DropdownMenuItem>
-                    <DropdownMenuItem>Sort by Name</DropdownMenuItem>
-                    <DropdownMenuItem>Sort by Status</DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
-                </div>
-
-                {/* Stats Cards */}
-                <div className="grid grid-cols-3 gap-4 mb-8">
-                <Card className="border border-gray-200">
-                    <CardContent className="pt-6 text-start">
-                    <p className="text-sm font-normal text-gray-600 mb-1">Total Appointments</p>
-                    <p className="text-2xl font-bold text-gray-900">304</p>
-                    </CardContent>
-                </Card>
-                <Card className="border border-gray-200">
-                    <CardContent className="pt-6 text-start">
-                    <p className="text-sm font-normal text-gray-600 mb-1">Physical</p>
-                    <p className="text-2xl font-bold text-gray-900">67</p>
-                    </CardContent>
-                </Card>
-                <Card className="border border-gray-200">
-                    <CardContent className="pt-6 text-start">
-                    <p className="text-sm font-normal text-gray-600 mb-1">Virtual</p>
-                    <p className="text-2xl font-bold text-gray-900">243</p>
-                    </CardContent>
-                </Card>
-                </div>
-
-                <div className="flex gap-6">
-                {/* Left Sidebar */}
-                <div className="w-80 space-y-6">
-                    {/* My Appointments List */}
-                    <div className="bg-white rounded-lg border text-start border-gray-200 p-4">
-                    <h3 className="font-semibold lg:w-34 lg:border-b-2 border-black text-gray-900 mb-4">My Appointments</h3>
-                    <div className="space-y-3">
-                        {sidebarAppointments.map((apt, index) => (
-                        <div
-                            key={index}
-                            className="flex items-start justify-between p-3 hover:bg-gray-50 rounded-lg cursor-pointer"
-                        >
-                            <div className="flex items-start gap-4">
-                            <img
-                                src="/donor image.jpg"
-                                alt={apt.name}
-                                className="w-10 h-10 rounded-full"
-                            />
-                            <div className='flex flex-col gap-1'>
-                                <p className="text-sm font-semibold text-gray-900">
-                                {apt.name}
-                                </p>
-                                <p className="text-xs text-gray-600">{apt.type}</p>
-                            </div>
-                            </div>
-                            {apt.status && (
-                            <Badge className="text-xs ml-4 font-semibold bg-red-100 text-red-600">
-                                {apt.status}
-                            </Badge>
-                            )}
-                            {apt.time && (
-                            <Badge className="text-xs ml-10 font-semibold bg-blue-100 text-blue-600">
-                                {apt.time}
-                            </Badge>
-                            )}
-                        </div>
-                        ))}
-                    </div>
-                    </div>
-
-                    {/* Calendar */}
-                    <div className="bg-white rounded-lg border border-gray-200 p-4">
-                    <Calendar7Days />
-                    </div>
-                </div>
-
-                {/* Right Content */}
-                <div className="flex-1">
-                    {/* Tabs */}
-                    <Tabs
-                    value={activeTab}
-                    onValueChange={setActiveTab}
-                    className="mb-6"
-                    >
-                    <TabsList className="border-b gap-4 bg-transparent p-0">
-                        <TabsTrigger
-                        value="my-appointments"
-                        className="border-0  border-b-2 rounded-none shadow-none data-[state=active]:border-black data-[state=active]:bg-transparent"
-                        >
-                        My Appointments
-                        </TabsTrigger>
-                        <TabsTrigger
-                        value="all-request"
-                        className="border-0 border-b-2 rounded-none shadow-none data-[state=active]:border-black data-[state=active]:bg-transparent"
-                        >
-                        All Request
-                        </TabsTrigger>
-                        <TabsTrigger
-                        value="confirmed"
-                        className="border-0 border-b-2 rounded-none shadow-none data-[state=active]:border-black data-[state=active]:bg-transparent"
-                        >
-                        Confirmed Request
-                        </TabsTrigger>
-                        <TabsTrigger
-                        value="declined"
-                        className="border-0 border-b-2 rounded-none shadow-none data-[state=active]:border-black data-[state=active]:bg-transparent"
-                        >
-                        Declined Request
-                        </TabsTrigger>
-                        <TabsTrigger
-                        value="pending"
-                        className="border-0 border-b-2 rounded-none shadow-none data-[state=active]:border-black data-[state=active]:bg-transparent"
-                        >
-                        Pending
-                        </TabsTrigger>
-                    </TabsList>
-
-                    <TabsContent value={activeTab} className="space-y-4 mt-6">
-                        {/* Search and Actions */}
-                        <div className="flex gap-3">
-                        <div className="flex-1 relative">
-                            <Search className="absolute left-3 top-4 h-5 w-5 text-gray-400" />
-                            <Input
-                            placeholder="Search"
-                            className="pl-10 bg-white border border-gray-200 focus-visible:border-blue-300 focus-visible:ring-[1px]"
-                            />
-                        </div>
-                        <Button variant="outline" className="gap-2 h-12">
-                            <Filter className="h-4 w-4" />
-                            Filter
-                        </Button>
-                        <Button variant="outline" className="gap-2 h-12">
-                            <Download className="h-4 w-4" />
-                            Export
-                        </Button>
-                        </div>
-
-                        {/* Table */}
-                        <div className="bg-white rounded-lg border border-gray-200">
-                        <Table
-                            columns={columns}
-                            data={appointmentData}
-                            onPageChange={setCurrentPage}
-                            showSearch={false}
-                        />
-                        </div>
-                    </TabsContent>
-                    </Tabs>
-                </div>
-                </div>
-            </div>
-          </div>
-
-          {/* Blog Section */}
+        {/* Main Content */}
+        <div className="px-4 py-6">
+          <button
+          onClick={() => navigate(-1)}
+          className="flex h-10 w-10 items-center shadow-sm justify-center rounded-full hover:bg-white transition-colors"
+          >
+          <ArrowLeftIcon className="h-4 w-4 text-slate-900" />
+          </button>
+        </div>
+        <div className="p-6 w-full">
           <div className="">
-            <BlogSection />
+              {/* Header */}
+              <div className="flex justify-between items-center mb-6">
+              <h1 className="text-2xl font-bold text-gray-900">Appointments</h1>
+              <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                  <Button variant="outline" className="gap-2">
+                      <Calendar className="h-4 w-4" />
+                      Sort by Date
+                      <ChevronDown className="h-4 w-4" />
+                  </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                  <DropdownMenuItem>Sort by Date</DropdownMenuItem>
+                  <DropdownMenuItem>Sort by Name</DropdownMenuItem>
+                  <DropdownMenuItem>Sort by Status</DropdownMenuItem>
+                  </DropdownMenuContent>
+              </DropdownMenu>
+              </div>
+
+              {/* Stats Cards */}
+              <div className="grid grid-cols-3 gap-4 mb-8">
+              <Card className="border border-gray-200">
+                  <CardContent className="pt-6 text-start">
+                  <p className="text-sm font-normal text-gray-600 mb-1">Total Appointments</p>
+                  <p className="text-2xl font-bold text-gray-900">304</p>
+                  </CardContent>
+              </Card>
+              <Card className="border border-gray-200">
+                  <CardContent className="pt-6 text-start">
+                  <p className="text-sm font-normal text-gray-600 mb-1">Physical</p>
+                  <p className="text-2xl font-bold text-gray-900">67</p>
+                  </CardContent>
+              </Card>
+              <Card className="border border-gray-200">
+                  <CardContent className="pt-6 text-start">
+                  <p className="text-sm font-normal text-gray-600 mb-1">Virtual</p>
+                  <p className="text-2xl font-bold text-gray-900">243</p>
+                  </CardContent>
+              </Card>
+              </div>
+
+              <div className="flex gap-6 w-full flex-col lg:flex-row">
+              {/* Left Sidebar */}
+              <div className="lg:w-80 flex flex-col gap-1 sm:flex-row lg:flex-col space-y-6">
+                {/* My Appointments List */}
+                <div className="bg-white flex-1 rounded-lg border text-start border-gray-200 p-4">
+                  <h3 className="font-semibold lg:w-34 lg:border-b-2 border-black text-gray-900 mb-4">My Appointments</h3>
+                  <div className="space-y-3">
+                      {sidebarAppointments.map((apt, index) => (
+                      <div
+                          key={index}
+                          className="flex items-start justify-between p-3 hover:bg-gray-50 rounded-lg cursor-pointer"
+                      >
+                          <div className="flex items-start gap-4">
+                          <img
+                              src="/donor image.jpg"
+                              alt={apt.name}
+                              className="w-10 h-10 rounded-full"
+                          />
+                          <div className='flex flex-col gap-1'>
+                              <p className="text-sm font-semibold text-gray-900">
+                              {apt.name}
+                              </p>
+                              <p className="text-xs text-gray-600">{apt.type}</p>
+                          </div>
+                          </div>
+                          {apt.status && (
+                          <Badge className="text-xs ml-4 font-semibold bg-red-100 text-red-600">
+                              {apt.status}
+                          </Badge>
+                          )}
+                          {apt.time && (
+                          <Badge className="text-xs ml-10 font-semibold bg-blue-100 text-blue-600">
+                              {apt.time}
+                          </Badge>
+                          )}
+                      </div>
+                      ))}
+                  </div>
+                </div>
+
+                {/* Calendar */}
+                <div className="bg-white flex-1 rounded-lg border border-gray-200 p-4">
+                <Calendar7Days />
+                </div>
+              </div>
+
+              {/* Right Content */}
+              <div className="flex-1">
+                  {/* Tabs */}
+                  <Tabs
+                  value={activeTab}
+                  onValueChange={setActiveTab}
+                  className="mb-6"
+                  >
+                  <div className="overflow-x-auto flex justify-start items-center w-full">
+                  <TabsList className="border-b gap-4 bg-transparent p-0 lg:w-fit justify-start min-w-max">
+                      <TabsTrigger
+                      value="my-appointments"
+                      className="border-0  border-b-2 rounded-none shadow-none data-[state=active]:border-black data-[state=active]:bg-transparent whitespace-nowrap"
+                      >
+                      My Appointments
+                      </TabsTrigger>
+                      <TabsTrigger
+                      value="all-request"
+                      className="border-0 border-b-2 rounded-none shadow-none data-[state=active]:border-black data-[state=active]:bg-transparent whitespace-nowrap"
+                      >
+                      All Request
+                      </TabsTrigger>
+                      <TabsTrigger
+                      value="confirmed"
+                      className="border-0 border-b-2 rounded-none shadow-none data-[state=active]:border-black data-[state=active]:bg-transparent whitespace-nowrap"
+                      >
+                      Confirmed Request
+                      </TabsTrigger>
+                      <TabsTrigger
+                      value="declined"
+                      className="border-0 border-b-2 rounded-none shadow-none data-[state=active]:border-black data-[state=active]:bg-transparent whitespace-nowrap"
+                      >
+                      Declined Request
+                      </TabsTrigger>
+                      <TabsTrigger
+                      value="pending"
+                      className="border-0 border-b-2 rounded-none shadow-none data-[state=active]:border-black data-[state=active]:bg-transparent whitespace-nowrap"
+                      >
+                      Pending
+                      </TabsTrigger>
+                  </TabsList>
+                  </div>
+
+                  <TabsContent value={activeTab} className="space-y-4 mt-6">
+                      {/* Search and Actions */}
+                      <div className="flex gap-3">
+                      <div className="flex-1 relative">
+                          <Search className="absolute left-3 top-4 h-5 w-5 text-gray-400" />
+                          <Input
+                          placeholder="Search"
+                          className="pl-10 bg-white border border-gray-200 focus-visible:border-blue-300 focus-visible:ring-[1px]"
+                          />
+                      </div>
+                      <Button variant="outline" className="gap-2 h-12">
+                          <Filter className="h-4 w-4" />
+                          Filter
+                      </Button>
+                      <Button variant="outline" className="gap-2 h-12">
+                          <Download className="h-4 w-4" />
+                          Export
+                      </Button>
+                      </div>
+
+                      {/* Table */}
+                      <div className="bg-white rounded-lg border border-gray-200">
+                      <Table
+                          columns={columns}
+                          data={appointmentData}
+                          onPageChange={setCurrentPage}
+                          showSearch={false}
+                      />
+                      </div>
+                  </TabsContent>
+                  </Tabs>
+              </div>
+              </div>
           </div>
+        </div>
+
+        {/* Blog Section */}
+        <div className="">
+          <BlogSection />
+        </div>
+      </div>
           {/* Footer */}
           <Footer />
         </div>

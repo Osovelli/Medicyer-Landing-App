@@ -30,7 +30,7 @@ export default function DonationConfirmationModal({ isOpen, onClose }) {
             onClick={onClose}
             className="w-full py-3 border border-gray-900 text-gray-900 font-semibold rounded-lg hover:bg-gray-50"
           >
-            No, Cancel
+            Close
           </button>
         </div>
       </DialogContent>

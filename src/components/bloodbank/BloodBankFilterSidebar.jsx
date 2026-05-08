@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Slider } from "../ui/slider"
+import { Star } from "lucide-react"
 
 export function BloodBankFilterSidebar({
   onProximityChange,
@@ -29,7 +30,7 @@ export function BloodBankFilterSidebar({
   ]
 
   return (
-    <aside className="w-full md:w-64 bg-white rounded-lg p-6 border border-gray-200 h-fit">
+    <aside className="w-full md:w-50 lg:w-64 rounded-lg p-6 border border-gray-200 h-fit">
       {/* Proximity Range Slider */}
       <div className="mb-8">
         <h3 className="text-lg font-bold text-start text-gray-900 mb-4">Proximity (km)</h3>
@@ -52,6 +53,7 @@ export function BloodBankFilterSidebar({
             <label key={option.id} className="flex items-center gap-3 cursor-pointer">
               <Checkbox
                 checked={selectedRating.includes(option.value)}
+                className={'data-[state=checked]:bg-[#BD8CBF] data-[state=checked]:border-[#BD8CBF] rounded-sm'}
                 onCheckedChange={(checked) => {
                   if (checked) {
                     onRatingChange([...selectedRating, option.value])
@@ -62,15 +64,19 @@ export function BloodBankFilterSidebar({
               />
               <div className="flex items-center gap-1">
                 {[...Array(option.value)].map((_, i) => (
-                  <span key={i} className="text-yellow-400">
-                    ★
-                  </span>
+                  <Star 
+                  key={i} 
+                  fill="#FFCB00" 
+                  className="text-[#FFCB00] w-4 h-4" 
+                  />
                 ))}
                 {option.value < 5 && (
                   [...Array(5 - option.value)].map((_, i) => (
-                    <span key={`empty-${i}`} className="text-gray-300">
-                      ★
-                    </span>
+                    <Star 
+                    key={`empty-${i}`} 
+                    fill="#C1C3C7" 
+                    className="text-gray-300 w-4 h-4" 
+                    />
                   ))
                 )}
               </div>

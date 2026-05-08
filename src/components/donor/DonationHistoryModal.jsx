@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Calendar, MapPin, Droplet, X, HeartPulse } from "lucide-react";
+import { HeartInHandIcon } from "../custom/Icons";
 
 export default function DonationHistoryModal({ isOpen, onClose }) {
   const [activeTab, setActiveTab] = useState("past");
@@ -166,7 +167,7 @@ export default function DonationHistoryModal({ isOpen, onClose }) {
                   <h3 className="text-sm font-bold text-gray-900">{donation.name}</h3>
                   <div className="text-xs text-gray-600 space-y-2 mt-2">
                     <p className="flex items-center gap-2">
-                      <HeartPulse size={14} className="shrink-0" /> {donation.type}
+                      <HeartInHandIcon size={14} className="shrink-0" /> {donation.type}
                     </p>
                     <p className="flex items-center gap-2">
                       <Calendar size={14} className="shrink-0" /> {donation.date}

@@ -3,6 +3,7 @@ import CustomInput from '../custom/CustomInput';
 import ProfileLoadingModal from './ProfileLoadingModal';
 import ProfileUpdatedModal from './ProfileUpdatedModal';
 import { Button } from '../ui/button';
+import { CustomButton } from '../custom/CustomButton';
 
 export default function ProfileDetails() {
   const [isLoading, setIsLoading] = useState(false);
@@ -36,7 +37,7 @@ export default function ProfileDetails() {
 
   return (
     <div className="bg-white text-left rounded-lg p-8">
-      <h1 className="text-3xl font-bold text-sky mb-8">Profile Details</h1>
+      <h1 className="text-xl font-bold text-sky mb-8">Profile Details</h1>
 
       <div className="space-y-6 max-w-2xl">
         <CustomInput
@@ -71,13 +72,13 @@ export default function ProfileDetails() {
           placeholder="user@email.com"
         />
 
-        <Button
+        <CustomButton
           onClick={handleUpdateProfile}
-          className="w-full bg-sky hover:bg-blue-950 text-white font-medium py-4 px-6 rounded-lg transition-colors mt-8"
+          className="hover:bg-blue-950 text-white text-base font-medium py-4 px-20 rounded-lg transition-colors mt-8"
           size={'xl'}
         >
           Update Profile
-        </Button>
+        </CustomButton>
       </div>
 
       <ProfileLoadingModal isOpen={isLoading} />
